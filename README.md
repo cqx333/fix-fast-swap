@@ -1,133 +1,141 @@
+# fix fast/swap
 
-# fix_fast_swap
+`fix fast/swap` is a LAMMPS Monte Carlo fix for semi-grand-canonical
+type-swap sampling in atomic systems with pairwise-additive interaction models.
+It preserves the usual SGC-MC Metropolis transition rule while replacing
+repeated global potential-energy reevaluation with an exact localized
+pair-energy difference for a trial atom-type change.
 
-`fix_fast_swap` is a custom LAMMPS fix implementing an optimized and strictly localized Monte Carlo (MC) atom-swap algorithm for semi-grand canonical (SGC) simulations. The primary goal of this fix is to significantly reduce the computational cost of MC swap attempts by evaluating energy differences locally, rather than recomputing the full system energy for every trial move.
+This repository is prepared as the code companion for the CPC manuscript:
 
-This repository contains only the new fix implementation and does not modify any original LAMMPS source files.
+**Fast Semi-Grand-Canonical Type-Swap Monte Carlo in LAMMPS via Localized
+Energy-Difference Evaluation for Pairwise-Additive Interaction Models**
 
----
+## Repository layout
 
-## Key Features
+```text
+src/MC/
+  fix_fast_swap.cpp
+  fix_fast_swap.h
 
-- Localized MC energy-difference evaluation  
-  Energy changes are computed only for the affected atom and its local neighborhood.
-- Pairwise-only formulation  
-  The algorithm is rigorously valid only for pairwise-additive interactions.
-- Explicit allow-list of supported pair styles  
-  Unsupported potentials are rejected at runtime.
-- Non-intrusive integration  
-  Implemented entirely as a standalone fix.
-- Fail-fast safety design  
-  Incorrect usage is detected early and terminates with a clear error message.
+examples/
+  in.exact__lj_cut__fast
+  in.exact__lj_cut__atom
+  in.exact__ternary_lj_cut__fast
+  in.exact__morse__fast
+  in.exact__table_lj__fast
+  in.exact__unequal_lj_cut__fast
+  in.parallel24_pair__lj_cut__fast
+  tables/pair_lj.table
 
----
+benchmark_workflow/
+  run_all.sh
+  submit_slurm.sh
+  diagnose_lmp_binary.sh
+  scripts/
+  tables/
 
-## Supported Pair Styles
+docs/
+  INSTALL.md
+  SUPPORTED_SCOPE.md
+```
 
-To guarantee physical correctness and reproducibility, `fix_fast_swap` explicitly restricts the allowed pair styles via an internal allow-list implemented locally inside the fix.
+## Basic LAMMPS syntax
 
-Currently supported pair styles:
+```lammps
+fix ID group-ID fast/swap Nevery Ncycle T seed types N type1 type2 ... typeN mu mu1 mu2 ... muN
+```
 
-- `pair_style lj/cut`
-- `pair_style lj/table`
+Optional single-rank energy-closure diagnostics:
 
-All other pair styles are intentionally disabled.
+```lammps
+fix ID group-ID fast/swap Nevery Ncycle T seed types N ... mu ... check yes Period Tolerance
+```
 
-In particular:
+Example:
 
-- Many-body potentials (e.g., EAM, MEAM, Tersoff, SNAP, DeepMD, etc.) are not supported and will trigger a hard runtime error.
-- This restriction does not affect other LAMMPS fixes or simulations and applies only when `fix fast/swap` is explicitly invoked.
+```lammps
+fix mc all fast/swap 1 ${ncycle} ${tmc} ${seed} types 2 1 2 mu 0.0 0.2
+```
 
-Future extensions can be enabled by appending new entries to the internal supported-pair-style list in `fix_fast_swap.cpp`.
+Here `Ncycle` is the number of attempted type-swap moves made whenever the fix
+is invoked. An MC sweep in the manuscript corresponds to `Ncycle = N_atoms`.
 
----
+## Quick start
 
-## Design Rationale
+Copy the source files into the LAMMPS `src/MC` package directory:
 
-The localized MC swap formulation relies on the following assumptions:
+```bash
+cp src/MC/fix_fast_swap.cpp /path/to/lammps/src/MC/
+cp src/MC/fix_fast_swap.h   /path/to/lammps/src/MC/
+```
 
-1. Pairwise additivity of interaction energies  
-2. Finite and well-defined interaction cutoff  
-3. Strict locality of the energy perturbation induced by a single swap  
+Build LAMMPS with the MC package and any pair-style packages required by your
+inputs. A typical CMake build is:
 
-Standard Lennard–Jones pair potentials (`lj/cut`, `lj/table`) satisfy these conditions. Most many-body potentials do not, making a localized energy-difference formulation generally invalid.
+```bash
+cmake ../cmake \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DBUILD_MPI=yes \
+  -DPKG_MC=yes
+cmake --build . -j 4
+```
 
-Rather than silently producing incorrect results, this fix adopts a conservative fail-fast design and aborts execution if an unsupported pair style is detected.
+Then run a minimal example:
 
-This design prioritizes physical correctness, reproducibility, clear user feedback, and long-term maintainability.
+```bash
+cd examples
+mkdir -p results
+mpirun -np 1 /path/to/lmp_mpi -in in.exact__lj_cut__fast
+```
 
----
+More detailed installation notes are in `docs/INSTALL.md`.
 
-## Installation
+## Validation and benchmark workflow
 
-1. Copy the following files into your LAMMPS `src/MC` directory:
+The `benchmark_workflow/` directory contains the workflow used for the paper
+validation and performance benchmarks. From that directory:
 
-   fix_fast_swap.cpp
-   fix_fast_swap.h
+```bash
+bash run_all.sh /path/to/lmp_mpi
+```
 
+Useful subsets:
 
-2. Re-compile and Rebuild LAMMPS using your standard build procedure, for example:
+```bash
+SUITE=validation bash run_all.sh /path/to/lmp_mpi
+SUITE=size_scaling bash run_all.sh /path/to/lmp_mpi
+SUITE=strong_scaling bash run_all.sh /path/to/lmp_mpi
+SUITE=nonlj_parallel_scaling bash run_all.sh /path/to/lmp_mpi
+```
 
+The full raw data and publication figure scripts are archived in the companion
+Zenodo dataset.
 
-   make -j 8
+## Supported scope
 
+The current implementation supports atomic systems whose potential energy can be
+written as a sum of pair terms that are accessible through the LAMMPS
+`pair->single()` interface. See `docs/SUPPORTED_SCOPE.md`.
 
-No changes to any original LAMMPS source files are required.
+Validated examples include:
 
----
+- LJ/cut
+- tabulated LJ
+- Morse
+- Buckingham+Coul/cut
+- Coul/DSF
+- LJ+Yukawa hybrid/overlay
+- ZBL
+- unequal type-pair cutoffs
+- binary and ternary type-swap cases
 
-## Usage Example
-
-
-pair_style lj/cut 2.5
-pair_coeff * * 1.0 1.0 2.5
-
-fix mcswap all fast/swap 1 10 12345 0.7 types 2 1 2 mu 0 2.0
-which is exactly the same as (but much faster than) the fix atom/swap command:
-fix mcswap all atom/swap 1 10 12345 0.7 semi-grand yes types 1 2 mu 0.0 2.0
-
-
-If an unsupported pair style is used, LAMMPS will terminate with an error message similar to:
-
-
-Fix fast/swap supports only explicitly listed pair styles (currently: lj/cut, lj/table)
-
-
----
-
-## Parallel Safety
-
-* The fix includes runtime checks to determine whether parallel MC site selection is safe under the current MPI domain decomposition.
-* If the safety criteria are not satisfied, the fix automatically and permanently falls back to a serial MC selection path, ensuring correctness.
-
----
-
-## Scope and Limitations
-
-* Intended for pairwise Lennard–Jones–type systems.
-* Not a drop-in replacement for `fix atom/swap` in general many-body simulations.
-* The current implementation favors correctness and clarity over generality.
-
----
-
-## Citation
-
-If you use this fix in your research, please cite:
-
-> Q. Chen, L. Wang, J. Wang, J. J. Hoyt,
-> *Accelerating Semi-Grand Canonical Monte Carlo in LAMMPS via Localized Energy-Difference Computations*,
-> Manuscript in preparation.
-
----
+Unsupported cases include many-body pair styles, KSpace long-range energy
+terms, pair tail corrections, molecular topology terms, and charged type swaps
+with incompatible per-atom charges.
 
 ## License
 
-This code is provided for research use. Please refer to the LICENSE file for details.
-
----
-
-## Contact
-
-For questions, bug reports, or discussions regarding algorithmic or implementation details, please open an issue or contact the author directly.
-
+This code is intended to be distributed under GPL-2.0-or-later, consistent with
+LAMMPS-derived source files. See `LICENSE`.
 

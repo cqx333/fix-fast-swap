@@ -1,0 +1,44 @@
+clear
+units lj
+dimension 3
+boundary p p p
+atom_style atomic
+
+variable ncycle equal 864
+variable nsweeps equal 60
+variable seed equal 24681357
+variable tmc equal 1.0
+
+lattice fcc 0.8442
+region box block 0 6 0 6 0 6 units lattice
+create_box 3 box
+create_atoms 1 box
+region slab2 block INF INF INF INF 2 4 units lattice
+region slab3 block INF INF INF INF 4 INF units lattice
+set region slab2 type 2
+set region slab3 type 3
+mass 1 1
+mass 2 1
+mass 3 1
+
+pair_style lj/cut 2.4
+pair_coeff 1 1 0.890000 0.940000 2.400000
+pair_coeff 1 2 0.930000 0.955000 2.400000
+pair_coeff 1 3 0.970000 0.970000 2.400000
+pair_coeff 2 2 1.000000 0.980000 2.400000
+pair_coeff 2 3 1.040000 0.995000 2.400000
+pair_coeff 3 3 1.110000 1.020000 2.400000
+
+neighbor 0.3 bin
+neigh_modify delay 0 every 1 check yes
+timestep 0.0
+fix int all nve
+
+compute ctype all count/type atom
+fix mc all atom/swap 1 ${ncycle} ${seed} ${tmc} ke no semi-grand yes types 1 2 3 mu 0 0.18 -0.12
+thermo 5
+thermo_modify format float %.17g
+thermo_style custom step pe c_ctype[1] c_ctype[2] c_ctype[3] f_mc[1] f_mc[2]
+run ${nsweeps}
+
+write_data results/exact__ternary_lj_cut__atom.data nocoeff
