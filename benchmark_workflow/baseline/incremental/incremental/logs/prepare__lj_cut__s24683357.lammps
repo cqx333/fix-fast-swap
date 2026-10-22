@@ -1,0 +1,118 @@
+LAMMPS (17 Apr 2024 - Development)
+  using 1 OpenMP thread(s) per MPI task
+clear
+  using 1 OpenMP thread(s) per MPI task
+units lj
+dimension 3
+boundary p p p
+atom_style atomic
+processors 1 1 1
+lattice fcc 0.8442
+Lattice spacing in x,y,z = 1.6795962 1.6795962 1.6795962
+region box block 0 4 0 4 0 8 units lattice
+create_box 2 box
+Created orthogonal box = (0 0 0) to (6.7183848 6.7183848 13.43677)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 512 atoms
+  using lattice units in orthogonal box = (0 0 0) to (6.7183848 6.7183848 13.43677)
+  create_atoms CPU = 0.000 seconds
+region upper block INF INF INF INF 4 8 units lattice
+set region upper type 2
+Setting atom values ...
+  256 settings made for type
+mass 1 1
+mass 2 1
+pair_style lj/cut 2.4
+pair_coeff 1 1 1.00 1.00 2.4
+pair_coeff 1 2 1.10 0.98 2.4
+pair_coeff 2 2 0.85 0.95 2.4
+neighbor 0.3 bin
+neigh_modify delay 0 every 1 check yes
+set group all type 1
+Setting atom values ...
+  512 settings made for type
+set group all type/ratio 2 0.3 549537049
+Setting atom values ...
+  153 settings made for type/ratio
+velocity all create 1 735213590 mom yes rot no dist gaussian
+timestep 0.001
+fix integrate all nvt temp 1 1 0.2
+compute pdist all pair/local dist
+compute rmin all reduce min c_pdist inputs local
+thermo_style custom step atoms pe temp press c_rmin
+thermo_modify norm no format float %.17g
+thermo 1000
+run 20000
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 2.7
+  ghost atom cutoff = 2.7
+  binsize = 1.35, bins = 5 5 10
+  2 neighbor lists, perpetual/occasional/extra = 1 1 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+  (2) compute pair/local, occasional, copy from (1)
+      attributes: half, newton on
+      pair build: copy
+      stencil: none
+      bin: none
+Per MPI rank memory allocation (min/avg/max) = 3.132 | 3.132 | 3.132 Mbytes
+   Step        Atoms        PotEng          Temp          Press          c_rmin    
+         0         512  -3414.1368869193643 1.0000000000000004 -5.7604184714918283 1.1876538565816679
+      1000         512  -2784.3977017628422 1.0296772362248234 1.4592669343223688 0.90618865340911336
+      2000         512  -2744.8389320106212 0.95769937484321954 1.763611387484959 0.88567127864509565
+      3000         512  -2725.8311281045267 0.96929655523564351 1.9203787440807747 0.8828123723909187
+      4000         512  -2708.7720102886537 0.9891559655374208 2.1375545958050606 0.88578963325214366
+      5000         512  -2717.1945185814429 1.009980842986663 2.074853884583312 0.8760907244983499
+      6000         512  -2737.9759809799548 1.0111245326711389 1.8266144872830914 0.89856006327282834
+      7000         512  -2777.8432986930825 0.9671434167955959 1.349316690502683 0.87660335316857096
+      8000         512  -2717.8131194420912 1.0041163448179296 1.9892514839504432 0.89032590402051248
+      9000         512  -2743.8892611454971 0.9867960493047917 1.8319979535242983 0.90742107252806437
+     10000         512  -2736.6616944324851 0.96739280788455118 1.7451320923492331 0.89429800527612924
+     11000         512  -2766.3323560089848 0.9930350272734112 1.7662717643963521 0.89955747274666453
+     12000         512  -2708.6411843288683 0.98048521102002972 2.0584119507626344 0.87834801345217151
+     13000         512  -2716.1837716862601 1.0317448851467714 2.1318464480848438 0.88666785961732575
+     14000         512  -2763.2963568976847 0.92589686856791387 1.5516766070327546 0.9194613216015709
+     15000         512  -2718.1803180605671 0.99154035457055212 2.1183187276132154 0.8771307236155349
+     16000         512  -2740.338070908449 0.97021855490679509 1.7968846633687015 0.86187225770965692
+     17000         512  -2734.2485145072046 0.98638517219019972 1.8191323842229046 0.8649717367103591
+     18000         512  -2731.6936145551426 0.97278991173933749 1.9140578335995493 0.9011343737932177
+     19000         512  -2732.0042495001294 0.97136224339497879 1.9120558682501876 0.89066803350972545
+     20000         512  -2735.7766004724695 1.0660834168341824 1.9351057028404186 0.87447707634254623
+Loop time of 4.22351 on 1 procs for 20000 steps with 512 atoms
+
+Performance: 409138.746 tau/day, 4735.402 timesteps/s, 2.425 Matom-step/s
+99.9% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 3.6106     | 3.6106     | 3.6106     |   0.0 | 85.49
+Neigh   | 0.33257    | 0.33257    | 0.33257    |   0.0 |  7.87
+Comm    | 0.12389    | 0.12389    | 0.12389    |   0.0 |  2.93
+Output  | 0.0074622  | 0.0074622  | 0.0074622  |   0.0 |  0.18
+Modify  | 0.11644    | 0.11644    | 0.11644    |   0.0 |  2.76
+Other   |            | 0.03256    |            |       |  0.77
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1840 ave        1840 max        1840 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17329 ave       17329 max       17329 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17329
+Ave neighs/atom = 33.845703
+Neighbor list builds = 507
+Dangerous builds = 0
+write_restart incremental/raw/prepare__lj_cut__s24683357.restart
+System init for write_restart ...
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+write_dump all custom incremental/raw/prepare__lj_cut__s24683357.final.dump id type x y z modify sort id format float %.17g
+Total wall time: 0:00:04

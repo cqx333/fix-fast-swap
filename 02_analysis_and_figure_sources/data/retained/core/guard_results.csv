@@ -1,0 +1,7 @@
+id,expected_error,returncode,pass_,fallback,rejection_matched
+guard__charge,identical charge,1,True,,True
+guard__fallback_positive_control,,0,True,True,
+guard__kspace,KSpace long-range,1,True,,True
+guard__manybody,does not support many-body,1,True,,True
+guard__molecular,supports only atomic systems,1,True,,True
+guard__tail,tail corrections,1,True,,True

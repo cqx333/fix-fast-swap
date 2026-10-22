@@ -89,6 +89,8 @@ FixFastSwap::FixFastSwap(LAMMPS *lmp, int narg, char **arg) :
 
   seed = utils::inumeric(FLERR, arg[6], false, lmp);
   if (seed <= 0) error->all(FLERR, "Fix fast/swap requires seed > 0");
+  if (seed >= 2147483647)
+    error->all(FLERR, "Fix fast/swap requires seed < 2147483647 for RanPark");
 
   int iarg = 7;
 
@@ -152,7 +154,13 @@ FixFastSwap::FixFastSwap(LAMMPS *lmp, int narg, char **arg) :
   // RNGs
   mc_cycle_ = 0;
   random_equal = new RanPark(lmp, seed);
-  random_unequal = new RanPark(lmp, seed);
+  // Distinct rank-local streams; preserve rank 0 and avoid seed overflow/zero.
+  const int local_seed = static_cast<int>(
+      (static_cast<long long>(seed) - 1 + static_cast<long long>(comm->me)) % 2147483646LL) + 1;
+  random_unequal = new RanPark(lmp, local_seed);
+  if (comm->me == 0)
+    utils::logmesg(lmp,
+                   "Fix fast/swap RNG revision 20261020: rank-local seeds; serial stream unchanged\n");
 
   // Communication: for this pairwise-only version we only need to forward atom types.
   // NOTE: If you later re-enable many-body support, these sizes must be revisited.

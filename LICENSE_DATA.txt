@@ -1,0 +1,1 @@
+Curated simulation observations and original scientific plots are CC BY 4.0. Software, workflow/plotting scripts and vendored LAMMPS-derived source retain GPL-2.0-or-later or their original notices. This data licence does not relicense software, publisher templates or third-party works.

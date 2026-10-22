@@ -1,0 +1,209 @@
+Selected: {'parallel': 45, 'mdmc': 36, 'timing': 75, 'size3d': 50} total: 206
+Only fast/swap, 2--24 ranks; no atom/swap, rank-1, phase diagram, or repeated RNG regression.
+001 parallel p=24 N= 6144 parallel__buck__p24__s24681357__fast
+002 parallel p=24 N= 6144 parallel__buck__p24__s24682357__fast
+003 parallel p=24 N= 6144 parallel__buck__p24__s24683357__fast
+004 parallel p=24 N= 6144 parallel__buck_coul_cut__p24__s24681357__fast
+005 parallel p=24 N= 6144 parallel__buck_coul_cut__p24__s24682357__fast
+006 parallel p=24 N= 6144 parallel__buck_coul_cut__p24__s24683357__fast
+007 parallel p=24 N= 6144 parallel__coul_dsf__p24__s24681357__fast
+008 parallel p=24 N= 6144 parallel__coul_dsf__p24__s24682357__fast
+009 parallel p=24 N= 6144 parallel__coul_dsf__p24__s24683357__fast
+010 parallel p=24 N= 6144 parallel__hybrid_overlay_lj_yukawa__p24__s24681357__fast
+011 parallel p=24 N= 6144 parallel__hybrid_overlay_lj_yukawa__p24__s24682357__fast
+012 parallel p=24 N= 6144 parallel__hybrid_overlay_lj_yukawa__p24__s24683357__fast
+013 parallel p= 2 N= 6144 parallel__lj_cut__p2__s24681357__fast
+014 parallel p= 2 N= 6144 parallel__lj_cut__p2__s24682357__fast
+015 parallel p= 2 N= 6144 parallel__lj_cut__p2__s24683357__fast
+016 parallel p= 4 N= 6144 parallel__lj_cut__p4__s24681357__fast
+017 parallel p= 4 N= 6144 parallel__lj_cut__p4__s24682357__fast
+018 parallel p= 4 N= 6144 parallel__lj_cut__p4__s24683357__fast
+019 parallel p=24 N= 6144 parallel__lj_cut__p24__s24681357__fast
+020 parallel p=24 N= 6144 parallel__lj_cut__p24__s24682357__fast
+021 parallel p=24 N= 6144 parallel__lj_cut__p24__s24683357__fast
+022 parallel p= 2 N= 6144 parallel__morse__p2__s24681357__fast
+023 parallel p= 2 N= 6144 parallel__morse__p2__s24682357__fast
+024 parallel p= 2 N= 6144 parallel__morse__p2__s24683357__fast
+025 parallel p= 4 N= 6144 parallel__morse__p4__s24681357__fast
+026 parallel p= 4 N= 6144 parallel__morse__p4__s24682357__fast
+027 parallel p= 4 N= 6144 parallel__morse__p4__s24683357__fast
+028 parallel p=24 N= 6144 parallel__morse__p24__s24681357__fast
+029 parallel p=24 N= 6144 parallel__morse__p24__s24682357__fast
+030 parallel p=24 N= 6144 parallel__morse__p24__s24683357__fast
+031 parallel p=24 N= 6144 parallel__table_lj__p24__s24681357__fast
+032 parallel p=24 N= 6144 parallel__table_lj__p24__s24682357__fast
+033 parallel p=24 N= 6144 parallel__table_lj__p24__s24683357__fast
+034 parallel p=24 N= 6144 parallel__ternary_lj_cut__p24__s24681357__fast
+035 parallel p=24 N= 6144 parallel__ternary_lj_cut__p24__s24682357__fast
+036 parallel p=24 N= 6144 parallel__ternary_lj_cut__p24__s24683357__fast
+037 parallel p=24 N= 6144 parallel__unequal_lj_cut__p24__s24681357__fast
+038 parallel p=24 N= 6144 parallel__unequal_lj_cut__p24__s24682357__fast
+039 parallel p=24 N= 6144 parallel__unequal_lj_cut__p24__s24683357__fast
+040 parallel p=24 N= 6144 parallel__yukawa__p24__s24681357__fast
+041 parallel p=24 N= 6144 parallel__yukawa__p24__s24682357__fast
+042 parallel p=24 N= 6144 parallel__yukawa__p24__s24683357__fast
+043 parallel p=24 N= 6144 parallel__zbl__p24__s24681357__fast
+044 parallel p=24 N= 6144 parallel__zbl__p24__s24682357__fast
+045 parallel p=24 N= 6144 parallel__zbl__p24__s24683357__fast
+046 mdmc     p= 2 N=  512 dynamic__lj_cut__p2__s24681357__fast__dtbase__from0
+047 mdmc     p= 2 N=  512 dynamic__lj_cut__p2__s24681357__fast__dtbase__from100
+048 mdmc     p= 2 N=  512 dynamic__lj_cut__p2__s24681357__fast__dtbase__from200
+049 mdmc     p= 2 N=  512 dynamic__lj_cut__p2__s24681357__fast__dtbase__from300
+050 mdmc     p= 2 N=  512 dynamic__lj_cut__p2__s24681357__fast__dtbase__from400
+051 mdmc     p= 2 N=  512 dynamic__lj_cut__p2__s24681357__fast__dtbase__from500
+052 mdmc     p= 2 N=  512 dynamic__lj_cut__p2__s24682357__fast__dtbase__from0
+053 mdmc     p= 2 N=  512 dynamic__lj_cut__p2__s24682357__fast__dtbase__from100
+054 mdmc     p= 2 N=  512 dynamic__lj_cut__p2__s24682357__fast__dtbase__from200
+055 mdmc     p= 2 N=  512 dynamic__lj_cut__p2__s24682357__fast__dtbase__from300
+056 mdmc     p= 2 N=  512 dynamic__lj_cut__p2__s24682357__fast__dtbase__from400
+057 mdmc     p= 2 N=  512 dynamic__lj_cut__p2__s24682357__fast__dtbase__from500
+058 mdmc     p= 2 N=  512 dynamic__lj_cut__p2__s24683357__fast__dtbase__from0
+059 mdmc     p= 2 N=  512 dynamic__lj_cut__p2__s24683357__fast__dtbase__from100
+060 mdmc     p= 2 N=  512 dynamic__lj_cut__p2__s24683357__fast__dtbase__from200
+061 mdmc     p= 2 N=  512 dynamic__lj_cut__p2__s24683357__fast__dtbase__from300
+062 mdmc     p= 2 N=  512 dynamic__lj_cut__p2__s24683357__fast__dtbase__from400
+063 mdmc     p= 2 N=  512 dynamic__lj_cut__p2__s24683357__fast__dtbase__from500
+064 mdmc     p= 2 N=  512 dynamic__morse_dynamic__p2__s24681357__fast__dtbase__from0
+065 mdmc     p= 2 N=  512 dynamic__morse_dynamic__p2__s24681357__fast__dtbase__from100
+066 mdmc     p= 2 N=  512 dynamic__morse_dynamic__p2__s24681357__fast__dtbase__from200
+067 mdmc     p= 2 N=  512 dynamic__morse_dynamic__p2__s24681357__fast__dtbase__from300
+068 mdmc     p= 2 N=  512 dynamic__morse_dynamic__p2__s24681357__fast__dtbase__from400
+069 mdmc     p= 2 N=  512 dynamic__morse_dynamic__p2__s24681357__fast__dtbase__from500
+070 mdmc     p= 2 N=  512 dynamic__morse_dynamic__p2__s24682357__fast__dtbase__from0
+071 mdmc     p= 2 N=  512 dynamic__morse_dynamic__p2__s24682357__fast__dtbase__from100
+072 mdmc     p= 2 N=  512 dynamic__morse_dynamic__p2__s24682357__fast__dtbase__from200
+073 mdmc     p= 2 N=  512 dynamic__morse_dynamic__p2__s24682357__fast__dtbase__from300
+074 mdmc     p= 2 N=  512 dynamic__morse_dynamic__p2__s24682357__fast__dtbase__from400
+075 mdmc     p= 2 N=  512 dynamic__morse_dynamic__p2__s24682357__fast__dtbase__from500
+076 mdmc     p= 2 N=  512 dynamic__morse_dynamic__p2__s24683357__fast__dtbase__from0
+077 mdmc     p= 2 N=  512 dynamic__morse_dynamic__p2__s24683357__fast__dtbase__from100
+078 mdmc     p= 2 N=  512 dynamic__morse_dynamic__p2__s24683357__fast__dtbase__from200
+079 mdmc     p= 2 N=  512 dynamic__morse_dynamic__p2__s24683357__fast__dtbase__from300
+080 mdmc     p= 2 N=  512 dynamic__morse_dynamic__p2__s24683357__fast__dtbase__from400
+081 mdmc     p= 2 N=  512 dynamic__morse_dynamic__p2__s24683357__fast__dtbase__from500
+082 timing   p=24 N= 6144 timing__buck__4x4x96__p24__r1__fast
+083 timing   p=24 N= 6144 timing__buck__4x4x96__p24__r2__fast
+084 timing   p=24 N= 6144 timing__buck__4x4x96__p24__r3__fast
+085 timing   p= 2 N= 6144 timing__buck_coul_cut__4x4x96__p2__r1__fast
+086 timing   p= 2 N= 6144 timing__buck_coul_cut__4x4x96__p2__r2__fast
+087 timing   p= 2 N= 6144 timing__buck_coul_cut__4x4x96__p2__r3__fast
+088 timing   p= 8 N= 6144 timing__buck_coul_cut__4x4x96__p8__r1__fast
+089 timing   p= 8 N= 6144 timing__buck_coul_cut__4x4x96__p8__r2__fast
+090 timing   p= 8 N= 6144 timing__buck_coul_cut__4x4x96__p8__r3__fast
+091 timing   p=24 N= 6144 timing__buck_coul_cut__4x4x96__p24__r1__fast
+092 timing   p=24 N= 6144 timing__buck_coul_cut__4x4x96__p24__r2__fast
+093 timing   p=24 N= 6144 timing__buck_coul_cut__4x4x96__p24__r3__fast
+094 timing   p=24 N= 6144 timing__coul_dsf__4x4x96__p24__r1__fast
+095 timing   p=24 N= 6144 timing__coul_dsf__4x4x96__p24__r2__fast
+096 timing   p=24 N= 6144 timing__coul_dsf__4x4x96__p24__r3__fast
+097 timing   p=24 N= 6144 timing__hybrid_overlay_lj_yukawa__4x4x96__p24__r1__fast
+098 timing   p=24 N= 6144 timing__hybrid_overlay_lj_yukawa__4x4x96__p24__r2__fast
+099 timing   p=24 N= 6144 timing__hybrid_overlay_lj_yukawa__4x4x96__p24__r3__fast
+100 timing   p=24 N= 6144 timing__lj_cut__4x4x96__p24__r1__fast
+101 timing   p=24 N= 6144 timing__lj_cut__4x4x96__p24__r2__fast
+102 timing   p=24 N= 6144 timing__lj_cut__4x4x96__p24__r3__fast
+103 timing   p= 2 N=24576 timing__lj_cut__8x8x96__p2__r1__fast
+104 timing   p= 2 N=24576 timing__lj_cut__8x8x96__p2__r2__fast
+105 timing   p= 2 N=24576 timing__lj_cut__8x8x96__p2__r3__fast
+106 timing   p= 4 N=24576 timing__lj_cut__8x8x96__p4__r1__fast
+107 timing   p= 4 N=24576 timing__lj_cut__8x8x96__p4__r2__fast
+108 timing   p= 4 N=24576 timing__lj_cut__8x8x96__p4__r3__fast
+109 timing   p= 8 N=24576 timing__lj_cut__8x8x96__p8__r1__fast
+110 timing   p= 8 N=24576 timing__lj_cut__8x8x96__p8__r2__fast
+111 timing   p= 8 N=24576 timing__lj_cut__8x8x96__p8__r3__fast
+112 timing   p=12 N=24576 timing__lj_cut__8x8x96__p12__r1__fast
+113 timing   p=12 N=24576 timing__lj_cut__8x8x96__p12__r2__fast
+114 timing   p=12 N=24576 timing__lj_cut__8x8x96__p12__r3__fast
+115 timing   p=16 N=24576 timing__lj_cut__8x8x96__p16__r1__fast
+116 timing   p=16 N=24576 timing__lj_cut__8x8x96__p16__r2__fast
+117 timing   p=16 N=24576 timing__lj_cut__8x8x96__p16__r3__fast
+118 timing   p=24 N=24576 timing__lj_cut__8x8x96__p24__r1__fast
+119 timing   p=24 N=24576 timing__lj_cut__8x8x96__p24__r2__fast
+120 timing   p=24 N=24576 timing__lj_cut__8x8x96__p24__r3__fast
+121 timing   p= 2 N= 6144 timing__morse__4x4x96__p2__r1__fast
+122 timing   p= 2 N= 6144 timing__morse__4x4x96__p2__r2__fast
+123 timing   p= 2 N= 6144 timing__morse__4x4x96__p2__r3__fast
+124 timing   p= 8 N= 6144 timing__morse__4x4x96__p8__r1__fast
+125 timing   p= 8 N= 6144 timing__morse__4x4x96__p8__r2__fast
+126 timing   p= 8 N= 6144 timing__morse__4x4x96__p8__r3__fast
+127 timing   p=24 N= 6144 timing__morse__4x4x96__p24__r1__fast
+128 timing   p=24 N= 6144 timing__morse__4x4x96__p24__r2__fast
+129 timing   p=24 N= 6144 timing__morse__4x4x96__p24__r3__fast
+130 timing   p=24 N= 6144 timing__table_lj__4x4x96__p24__r1__fast
+131 timing   p=24 N= 6144 timing__table_lj__4x4x96__p24__r2__fast
+132 timing   p=24 N= 6144 timing__table_lj__4x4x96__p24__r3__fast
+133 timing   p=24 N= 6144 timing__ternary_lj_cut__4x4x96__p24__r1__fast
+134 timing   p=24 N= 6144 timing__ternary_lj_cut__4x4x96__p24__r2__fast
+135 timing   p=24 N= 6144 timing__ternary_lj_cut__4x4x96__p24__r3__fast
+136 timing   p=24 N= 6144 timing__unequal_lj_cut__4x4x96__p24__r1__fast
+137 timing   p=24 N= 6144 timing__unequal_lj_cut__4x4x96__p24__r2__fast
+138 timing   p=24 N= 6144 timing__unequal_lj_cut__4x4x96__p24__r3__fast
+139 timing   p= 2 N= 6144 timing__yukawa__4x4x96__p2__r1__fast
+140 timing   p= 2 N= 6144 timing__yukawa__4x4x96__p2__r2__fast
+141 timing   p= 2 N= 6144 timing__yukawa__4x4x96__p2__r3__fast
+142 timing   p= 8 N= 6144 timing__yukawa__4x4x96__p8__r1__fast
+143 timing   p= 8 N= 6144 timing__yukawa__4x4x96__p8__r2__fast
+144 timing   p= 8 N= 6144 timing__yukawa__4x4x96__p8__r3__fast
+145 timing   p=24 N= 6144 timing__yukawa__4x4x96__p24__r1__fast
+146 timing   p=24 N= 6144 timing__yukawa__4x4x96__p24__r2__fast
+147 timing   p=24 N= 6144 timing__yukawa__4x4x96__p24__r3__fast
+148 timing   p= 2 N= 6144 timing__zbl__4x4x96__p2__r1__fast
+149 timing   p= 2 N= 6144 timing__zbl__4x4x96__p2__r2__fast
+150 timing   p= 2 N= 6144 timing__zbl__4x4x96__p2__r3__fast
+151 timing   p= 8 N= 6144 timing__zbl__4x4x96__p8__r1__fast
+152 timing   p= 8 N= 6144 timing__zbl__4x4x96__p8__r2__fast
+153 timing   p= 8 N= 6144 timing__zbl__4x4x96__p8__r3__fast
+154 timing   p=24 N= 6144 timing__zbl__4x4x96__p24__r1__fast
+155 timing   p=24 N= 6144 timing__zbl__4x4x96__p24__r2__fast
+156 timing   p=24 N= 6144 timing__zbl__4x4x96__p24__r3__fast
+157 size3d   p=24 N= 6144 timing3d__lj_cut__8x12x16__p24__r1__fast
+158 size3d   p=24 N= 6144 timing3d__lj_cut__8x12x16__p24__r2__fast
+159 size3d   p=24 N= 6144 timing3d__lj_cut__8x12x16__p24__r3__fast
+160 size3d   p=24 N= 6144 timing3d__lj_cut__8x12x16__p24__r4__fast
+161 size3d   p=24 N= 6144 timing3d__lj_cut__8x12x16__p24__r5__fast
+162 size3d   p=24 N= 7680 timing3d__lj_cut__10x12x16__p24__r1__fast
+163 size3d   p=24 N= 7680 timing3d__lj_cut__10x12x16__p24__r2__fast
+164 size3d   p=24 N= 7680 timing3d__lj_cut__10x12x16__p24__r3__fast
+165 size3d   p=24 N= 7680 timing3d__lj_cut__10x12x16__p24__r4__fast
+166 size3d   p=24 N= 7680 timing3d__lj_cut__10x12x16__p24__r5__fast
+167 size3d   p=24 N= 9600 timing3d__lj_cut__10x15x16__p24__r1__fast
+168 size3d   p=24 N= 9600 timing3d__lj_cut__10x15x16__p24__r2__fast
+169 size3d   p=24 N= 9600 timing3d__lj_cut__10x15x16__p24__r3__fast
+170 size3d   p=24 N= 9600 timing3d__lj_cut__10x15x16__p24__r4__fast
+171 size3d   p=24 N= 9600 timing3d__lj_cut__10x15x16__p24__r5__fast
+172 size3d   p=24 N=12000 timing3d__lj_cut__10x15x20__p24__r1__fast
+173 size3d   p=24 N=12000 timing3d__lj_cut__10x15x20__p24__r2__fast
+174 size3d   p=24 N=12000 timing3d__lj_cut__10x15x20__p24__r3__fast
+175 size3d   p=24 N=12000 timing3d__lj_cut__10x15x20__p24__r4__fast
+176 size3d   p=24 N=12000 timing3d__lj_cut__10x15x20__p24__r5__fast
+177 size3d   p=24 N=14400 timing3d__lj_cut__12x15x20__p24__r1__fast
+178 size3d   p=24 N=14400 timing3d__lj_cut__12x15x20__p24__r2__fast
+179 size3d   p=24 N=14400 timing3d__lj_cut__12x15x20__p24__r3__fast
+180 size3d   p=24 N=14400 timing3d__lj_cut__12x15x20__p24__r4__fast
+181 size3d   p=24 N=14400 timing3d__lj_cut__12x15x20__p24__r5__fast
+182 size3d   p=24 N=17280 timing3d__lj_cut__12x18x20__p24__r1__fast
+183 size3d   p=24 N=17280 timing3d__lj_cut__12x18x20__p24__r2__fast
+184 size3d   p=24 N=17280 timing3d__lj_cut__12x18x20__p24__r3__fast
+185 size3d   p=24 N=17280 timing3d__lj_cut__12x18x20__p24__r4__fast
+186 size3d   p=24 N=17280 timing3d__lj_cut__12x18x20__p24__r5__fast
+187 size3d   p=24 N=20736 timing3d__lj_cut__12x18x24__p24__r1__fast
+188 size3d   p=24 N=20736 timing3d__lj_cut__12x18x24__p24__r2__fast
+189 size3d   p=24 N=20736 timing3d__lj_cut__12x18x24__p24__r3__fast
+190 size3d   p=24 N=20736 timing3d__lj_cut__12x18x24__p24__r4__fast
+191 size3d   p=24 N=20736 timing3d__lj_cut__12x18x24__p24__r5__fast
+192 size3d   p=24 N=24192 timing3d__lj_cut__14x18x24__p24__r1__fast
+193 size3d   p=24 N=24192 timing3d__lj_cut__14x18x24__p24__r2__fast
+194 size3d   p=24 N=24192 timing3d__lj_cut__14x18x24__p24__r3__fast
+195 size3d   p=24 N=24192 timing3d__lj_cut__14x18x24__p24__r4__fast
+196 size3d   p=24 N=24192 timing3d__lj_cut__14x18x24__p24__r5__fast
+197 size3d   p=24 N=28224 timing3d__lj_cut__14x21x24__p24__r1__fast
+198 size3d   p=24 N=28224 timing3d__lj_cut__14x21x24__p24__r2__fast
+199 size3d   p=24 N=28224 timing3d__lj_cut__14x21x24__p24__r3__fast
+200 size3d   p=24 N=28224 timing3d__lj_cut__14x21x24__p24__r4__fast
+201 size3d   p=24 N=28224 timing3d__lj_cut__14x21x24__p24__r5__fast
+202 size3d   p=24 N=32928 timing3d__lj_cut__14x21x28__p24__r1__fast
+203 size3d   p=24 N=32928 timing3d__lj_cut__14x21x28__p24__r2__fast
+204 size3d   p=24 N=32928 timing3d__lj_cut__14x21x28__p24__r3__fast
+205 size3d   p=24 N=32928 timing3d__lj_cut__14x21x28__p24__r4__fast
+206 size3d   p=24 N=32928 timing3d__lj_cut__14x21x28__p24__r5__fast
+Input integrity and all selected templates verified. No MPI simulations launched.

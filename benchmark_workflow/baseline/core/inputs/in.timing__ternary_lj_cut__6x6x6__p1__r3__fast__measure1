@@ -1,0 +1,35 @@
+clear
+units lj
+dimension 3
+boundary p p p
+atom_style atomic
+processors 1 1 1
+read_data results/raw/prepare__ternary_lj_cut__6x6x6.data
+mass 1 1
+mass 2 1
+mass 3 1
+pair_style lj/cut 2.4
+pair_coeff 1 1 0.890000 0.940000 2.400000
+pair_coeff 1 2 0.930000 0.955000 2.400000
+pair_coeff 1 3 0.970000 0.970000 2.400000
+pair_coeff 2 2 1.000000 0.980000 2.400000
+pair_coeff 2 3 1.040000 0.995000 2.400000
+pair_coeff 3 3 1.110000 1.020000 2.400000
+neighbor 0.3 bin
+neigh_modify delay 0 every 1 check yes
+timestep 0.0
+fix integrate all nve
+variable ncycle equal 864
+variable seed equal 24683357
+variable tmc equal 1
+compute ctype all count/type atom
+fix mc all fast/swap 1 ${ncycle} ${tmc} ${seed} types 3 1 2 3 mu 0 0.18 -0.12
+variable epa equal pe/atoms
+thermo_style custom step atoms pe v_epa c_ctype[1] c_ctype[2] c_ctype[3] f_mc[1] f_mc[2] temp press vol
+thermo_modify norm no format float %.17g
+thermo 1
+run 1
+print "REVISION_PRODUCTION_BEGIN"
+thermo 3173
+run 3173
+print "REVISION_PRODUCTION_END"

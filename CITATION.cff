@@ -1,41 +1,19 @@
 cff-version: 1.2.0
-title: "fix fast/swap: localized SGC-MC type-swap sampling in LAMMPS"
-message: "If you use this code, please cite the associated CPC manuscript and Zenodo dataset."
 type: software
-authors:
-  - family-names: Chen
-    given-names: Qingxi
-  - family-names: Wang
-    given-names: Lei
-  - family-names: Li
-    given-names: Junjie
-  - family-names: Hoyt
-    given-names: Jeffrey J.
-  - family-names: Wang
-    given-names: Jincheng
+title: "fix fast/swap: localized SGC-MC type-swap sampling in LAMMPS"
+message: "Cite the associated manuscript and the exact archived software/data version used."
+version: "2026.10.21-r2"
+doi: "10.5281/zenodo.23551995"
 repository-code: "https://github.com/cqx333/fix-fast-swap"
-date-released: "2026-05-28"
-version: "1.0.0"
-keywords:
-  - LAMMPS
-  - Monte Carlo
-  - semi-grand-canonical
-  - type swap
-  - pairwise-additive potentials
 license: GPL-2.0-or-later
-references:
-  - type: article
-    title: "Fast Semi-Grand-Canonical Type-Swap Monte Carlo in LAMMPS via Localized Energy-Difference Evaluation for Pairwise-Additive Interaction Models"
-    authors:
-      - family-names: Chen
-        given-names: Qingxi
-      - family-names: Wang
-        given-names: Lei
-      - family-names: Li
-        given-names: Junjie
-      - family-names: Hoyt
-        given-names: Jeffrey J.
-      - family-names: Wang
-        given-names: Jincheng
-    year: 2026
-    status: submitted
+authors:
+  - family-names: "Chen"
+    given-names: "Qingxi"
+  - family-names: "Wang"
+    given-names: "Lei"
+  - family-names: "Li"
+    given-names: "Junjie"
+  - family-names: "Hoyt"
+    given-names: "Jeffrey J."
+  - family-names: "Wang"
+    given-names: "Jincheng"

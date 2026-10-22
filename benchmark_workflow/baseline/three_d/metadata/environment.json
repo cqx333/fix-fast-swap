@@ -1,0 +1,59 @@
+{
+  "time": "2026-10-19T22:56:01+0800",
+  "host": "node05",
+  "python": "3.11.17 (main, Oct  7 2026, 00:02:24) [GCC 15.3.0]",
+  "python_executable": "/home/chenqx/.conda/envs/lmp-fast/bin/python",
+  "lmp": "/home/chenqx/LAMMPS-opt/build-fast/lmp_mpi",
+  "executable_sha256": "5306c77555863c4e5db4e952af84d81780f2f5f140a71ad8edc057fe5c74197d",
+  "mpi_launcher": [
+    "mpirun",
+    "-bind-to",
+    "core"
+  ],
+  "omp_threads_per_rank": 1,
+  "environment": {
+    "CONDA_PREFIX": "/home/chenqx/.conda/envs/lmp-fast",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MPI_LAUNCHER": "mpirun -bind-to core",
+    "OMP_DYNAMIC": "FALSE",
+    "LD_LIBRARY_PATH": "/home/chenqx/LAMMPS-opt/build-fast:/home/chenqx/LAMMPS-opt/build-fast:/home/chenqx/.conda/envs/lmp-fast/lib:/home/chenqx/LAMMPS-opt/build-fast:/home/chenqx/.conda/envs/lmp-fast/lib",
+    "OMP_NUM_THREADS": "1",
+    "PATH": "/home/chenqx/software/cmake-3.26/bin:/home/chenqx/.conda/envs/lmp-fast/bin:/opt/software/anaconda3/condabin:/home/chenqx/.local/bin:/home/chenqx/bin:/opt/software/torque-6.1/sbin:/opt/software/torque-6.1/bin:/opt/software/torque-6.1/bin:/opt/software/torque-6.1/sbin:/usr/share/Modules/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin",
+    "MKL_NUM_THREADS": "1"
+  },
+  "workflow_sha256": {
+    "scripts/analyze_3d.py": "6e124235b1207c89cda1cb63fe9009c17384ba922696cf9ab45518cb4cddb056",
+    "scripts/common.py": "b16d0a62191172a225192010d76c3c457075bdb51e9af5225447e97780184561",
+    "scripts/core_runner.py": "45fdbf3d86b852cc0da56b0abb047e7541a85b065e049ed08e7432810920ffa7",
+    "scripts/rank_probe.py": "59c35db0ae422e66a06e8eac15168aa1f6e5a89bc8d721b8872f4c8316721853",
+    "scripts/run_3d.py": "4870be86130c32759b45032614c29c4732bbc25693f5f506b2a5a5750ec07c29",
+    "vendor/generate_revision.py": "d3350516fdebf067cf71dcdda1b31f3fa30093f3e0b13a01cf395e51f8612cef",
+    "vendor/log_data.py": "300189263425bfb052690ab1f5638d3cb05a327004318a1af25d1d0c85ca1056",
+    "vendor/models.py": "5e438f501ed593f7153cd1fda84c6875d37604f293595653d60f7d7208ebe554"
+  },
+  "source_sha256": {
+    "fix_fast_swap.cpp": "333ffe8393ee2fefd5d5c7650be93f8b3d57bc3606478d28286b24ad45d7b7a0",
+    "fix_fast_swap.h": "162b781f529f0ce80047e09f031816755cdc7393c6dcb42ffc3cd5475f1dade6"
+  },
+  "cpu": "Architecture:                         x86_64\nCPU op-mode(s):                       32-bit, 64-bit\nAddress sizes:                        46 bits physical, 48 bits virtual\nByte Order:                           Little Endian\nCPU(s):                               32\nOn-line CPU(s) list:                  0-31\nVendor ID:                            GenuineIntel\nModel name:                           Intel(R) Xeon(R) Gold 5218 CPU @ 2.30GHz\nCPU family:                           6\nModel:                                85\nThread(s) per core:                   1\nCore(s) per socket:                   16\nSocket(s):                            2\nStepping:                             7\nCPU(s) scaling MHz:                   30%\nCPU max MHz:                          3900.0000\nCPU min MHz:                          1000.0000\nBogoMIPS:                             4600.00\nFlags:                                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb cat_l3 cdp_l3 intel_ppin ssbd mba ibrs ibpb stibp ibrs_enhanced tpr_shadow flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid cqm mpx rdt_a avx512f avx512dq rdseed adx smap clflushopt clwb intel_pt avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local dtherm ida arat pln pts vnmi pku ospke avx512_vnni md_clear flush_l1d arch_capabilities\nVirtualization:                       VT-x\nL1d cache:                            1 MiB (32 instances)\nL1i cache:                            1 MiB (32 instances)\nL2 cache:                             32 MiB (32 instances)\nL3 cache:                             44 MiB (2 instances)\nNUMA node(s):                         2\nNUMA node0 CPU(s):                    0-15\nNUMA node1 CPU(s):                    16-31\nVulnerability Gather data sampling:   Mitigation; Microcode\nVulnerability Itlb multihit:          KVM: Mitigation: Split huge pages\nVulnerability L1tf:                   Not affected\nVulnerability Mds:                    Not affected\nVulnerability Meltdown:               Not affected\nVulnerability Mmio stale data:        Mitigation; Clear CPU buffers; SMT disabled\nVulnerability Reg file data sampling: Not affected\nVulnerability Retbleed:               Mitigation; Enhanced IBRS\nVulnerability Spec rstack overflow:   Not affected\nVulnerability Spec store bypass:      Mitigation; Speculative Store Bypass disabled via prctl\nVulnerability Spectre v1:             Mitigation; usercopy/swapgs barriers and __user pointer sanitization\nVulnerability Spectre v2:             Mitigation; Enhanced / Automatic IBRS; IBPB conditional; RSB filling; PBRSB-eIBRS SW sequence; BHI SW loop, KVM SW loop\nVulnerability Srbds:                  Not affected\nVulnerability Tsx async abort:        Mitigation; TSX disabled\n",
+  "cpu_topology": "# The following is the parsable format, which can be fed to other\n# programs. Each different item in every column has an unique ID\n# starting usually from zero.\n# CPU,Core,Socket,Node\n0,0,0,0\n1,1,0,0\n2,2,0,0\n3,3,0,0\n4,4,0,0\n5,5,0,0\n6,6,0,0\n7,7,0,0\n8,8,0,0\n9,9,0,0\n10,10,0,0\n11,11,0,0\n12,12,0,0\n13,13,0,0\n14,14,0,0\n15,15,0,0\n16,16,1,1\n17,17,1,1\n18,18,1,1\n19,19,1,1\n20,20,1,1\n21,21,1,1\n22,22,1,1\n23,23,1,1\n24,24,1,1\n25,25,1,1\n26,26,1,1\n27,27,1,1\n28,28,1,1\n29,29,1,1\n30,30,1,1\n31,31,1,1\n",
+  "os": "Linux node05 5.14.0-570.17.1.el9_6.x86_64 #1 SMP PREEMPT_DYNAMIC Fri May 23 22:47:01 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux\n",
+  "loaded_libraries": "\tlinux-vdso.so.1 (0x00007ffc8a3ea000)\n\tliblammps_mpi.so.0 => /home/chenqx/LAMMPS-opt/build-fast/liblammps_mpi.so.0 (0x000014721c676000)\n\tlibmpi.so.12 => /home/chenqx/.conda/envs/lmp-fast/lib/libmpi.so.12 (0x000014721b637000)\n\tlibstdc++.so.6 => /home/chenqx/.conda/envs/lmp-fast/lib/libstdc++.so.6 (0x000014721b382000)\n\tlibgcc_s.so.1 => /home/chenqx/.conda/envs/lmp-fast/lib/libgcc_s.so.1 (0x000014721b354000)\n\tlibc.so.6 => /lib64/libc.so.6 (0x000014721b000000)\n\tlibpng16.so.16 => /home/chenqx/.conda/envs/lmp-fast/lib/libpng16.so.16 (0x000014721b302000)\n\tlibpython3.11.so.1.0 => /home/chenqx/.conda/envs/lmp-fast/lib/libpython3.11.so.1.0 (0x000014721aa2c000)\n\tlibgomp.so.1 => /home/chenqx/.conda/envs/lmp-fast/lib/libgomp.so.1 (0x000014721b2a7000)\n\tlibm.so.6 => /lib64/libm.so.6 (0x000014721a951000)\n\tlibhwloc.so.15 => /home/chenqx/.conda/envs/lmp-fast/lib/libhwloc.so.15 (0x000014721b245000)\n\tlibfabric.so.1 => /home/chenqx/.conda/envs/lmp-fast/lib/libfabric.so.1 (0x000014721a793000)\n\tlibucp.so.0 => /home/chenqx/.conda/envs/lmp-fast/lib/libucp.so.0 (0x000014721a690000)\n\tlibucs.so.0 => /home/chenqx/.conda/envs/lmp-fast/lib/libucs.so.0 (0x000014721a620000)\n\tlibpthread.so.0 => /lib64/libpthread.so.0 (0x000014721b23e000)\n\tlibrt.so.1 => /lib64/librt.so.1 (0x000014721b239000)\n\t/lib64/ld-linux-x86-64.so.2 (0x000014721d6fb000)\n\tlibdl.so.2 => /lib64/libdl.so.2 (0x000014721b234000)\n\tlibz.so.1 => /home/chenqx/.conda/envs/lmp-fast/lib/libz.so.1 (0x000014721b217000)\n\tlibutil.so.1 => /lib64/libutil.so.1 (0x000014721b212000)\n\tlibxml2.so.16 => /home/chenqx/.conda/envs/lmp-fast/lib/./libxml2.so.16 (0x000014721a4da000)\n\tlibrdmacm.so.1 => /home/chenqx/.conda/envs/lmp-fast/lib/./librdmacm.so.1 (0x000014721a4b8000)\n\tlibefa.so.1 => /home/chenqx/.conda/envs/lmp-fast/lib/./libefa.so.1 (0x000014721a4a6000)\n\tlibibverbs.so.1 => /home/chenqx/.conda/envs/lmp-fast/lib/./libibverbs.so.1 (0x000014721a481000)\n\tlibnl-3.so.200 => /home/chenqx/.conda/envs/lmp-fast/lib/./libnl-3.so.200 (0x000014721a45c000)\n\tlibnl-route-3.so.200 => /home/chenqx/.conda/envs/lmp-fast/lib/./libnl-route-3.so.200 (0x000014721a3c4000)\n\tlibatomic.so.1 => /home/chenqx/.conda/envs/lmp-fast/lib/./libatomic.so.1 (0x000014721a3b8000)\n\tlibuct.so.0 => /home/chenqx/.conda/envs/lmp-fast/lib/./libuct.so.0 (0x000014721a378000)\n\tlibucm.so.0 => /home/chenqx/.conda/envs/lmp-fast/lib/./libucm.so.0 (0x000014721a35d000)\n\tlibiconv.so.2 => /home/chenqx/.conda/envs/lmp-fast/lib/././libiconv.so.2 (0x000014721a24a000)\n\tlibicuuc.so.78 => /home/chenqx/.conda/envs/lmp-fast/lib/././libicuuc.so.78 (0x000014721a018000)\n\tlibicudata.so.78 => /home/chenqx/.conda/envs/lmp-fast/lib/././libicudata.so.78 (0x0000147218083000)\n",
+  "default_compiler_not_build_evidence": "c++ (conda-forge gcc 15.3.0-7) 15.3.0\nCopyright (C) 2025 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+  "mpi_version": "[mpiexec@node05] main (mpiexec/mpiexec.c:60): No executable provided. Try -h for usages.\n",
+  "relevant_library_hashes": {
+    "liblammps_mpi.so.0": {
+      "path": "/home/chenqx/LAMMPS-opt/build-fast/liblammps_mpi.so.0",
+      "sha256": "7f55a477112226c840c035b252ce109b365b343072f6dc9a81e2f7d12d311373"
+    },
+    "libmpi.so.12": {
+      "path": "/home/chenqx/.conda/envs/lmp-fast/lib/libmpi.so.12.6.2",
+      "sha256": "bb9dd34c7ba72c43df3e4b8a100612275dc103217816473fe087ff7e0a887ab5"
+    },
+    "libfabric.so.1": {
+      "path": "/home/chenqx/.conda/envs/lmp-fast/lib/libfabric.so.1.32.0",
+      "sha256": "786ced2efa6598ee7f25209e23ddbee0032d93f3adb1c3caad4cc75538019e0c"
+    }
+  },
+  "provenance_note": "Snapshot source hashes and binary hashes are separate evidence. Confirm build provenance; the default c++ version is not the build compiler."
+}

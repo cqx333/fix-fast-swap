@@ -1,0 +1,27 @@
+Analysis: D:\����\Paper for CPC\CPC-test_rng_recompute_20261020\tmp5fys73jk\analysis valid completed: 0 missing: 206 review flags: 0
+test_all_inputs_are_parallel_fast (test_workflow.Contracts) ... ok
+test_empty_analysis_does_not_invent_pass (test_workflow.Contracts) ... ok
+test_exact_scope (test_workflow.Contracts) ... ok
+test_fallback_and_wrong_marker_rejected (test_workflow.Contracts) ... ok
+test_fixed_charge_constant_energy_not_false_variance_failure (test_workflow.Contracts) ... ok
+test_immutable_bundle_hashes (test_workflow.Contracts) ... ok
+test_independent_bootstrap_streams (test_workflow.Contracts) ... ok
+test_long_chains_start_clean (test_workflow.Contracts) ... ok
+test_mobile_alignment_and_samples (test_workflow.Contracts) ... ok
+test_mobile_dependency_order_and_origins (test_workflow.Contracts) ... ok
+test_no_superseded_pure_flat_size (test_workflow.Contracts) ... ok
+test_original_references_are_not_new_library (test_workflow.Contracts) ... ok
+test_output_paths_cannot_overwrite_evidence (test_workflow.Contracts) ... ok
+test_parallel_geometry (test_workflow.Contracts) ... ok
+test_real_uploaded_snapshot_crosscheck (test_workflow.Contracts) ... ok
+test_resume_fingerprint_excludes_ldd_addresses (test_workflow.Contracts) ... ok
+test_selection_closes_dependencies (test_workflow.Contracts) ... ok
+test_three_d_grid_not_mistaken_for_flat (test_workflow.Contracts) ... ok
+test_timing_assets_pair_exactly (test_workflow.Contracts) ... ok
+test_timing_only_production_replaced (test_workflow.Contracts) ... ok
+test_unique_task_ids_and_counterparts (test_workflow.Contracts) ... ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 2.066s
+
+OK

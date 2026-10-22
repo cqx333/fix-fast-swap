@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+benchmark_workflow/results/
+benchmark_workflow/results_*/
+*.whl
+*.so
+*.dll
+*.exe

@@ -1,0 +1,31 @@
+clear
+units lj
+dimension 3
+boundary p p p
+atom_style atomic
+processors 1 1 1
+read_data results/raw/prepare__table_lj__6x6x6.data
+mass 1 1
+mass 2 1
+pair_style table linear 400
+pair_coeff 1 1 tables/pair_lj.table LJAA
+pair_coeff 1 2 tables/pair_lj.table LJAB
+pair_coeff 2 2 tables/pair_lj.table LJBB
+neighbor 0.3 bin
+neigh_modify delay 0 every 1 check yes
+timestep 0.0
+fix integrate all nve
+variable ncycle equal 864
+variable seed equal 24682357
+variable tmc equal 1
+compute ctype all count/type atom
+fix mc all fast/swap 1 ${ncycle} ${tmc} ${seed} types 2 1 2 mu 0 0.2
+variable epa equal pe/atoms
+thermo_style custom step atoms pe v_epa c_ctype[1] c_ctype[2] f_mc[1] f_mc[2] temp press vol
+thermo_modify norm no format float %.17g
+thermo 1
+run 1
+print "REVISION_PRODUCTION_BEGIN"
+thermo 1912
+run 1912
+print "REVISION_PRODUCTION_END"

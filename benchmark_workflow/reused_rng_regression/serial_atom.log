@@ -1,0 +1,111 @@
+LAMMPS (17 Apr 2024 - Development)
+  using 1 OpenMP thread(s) per MPI task
+clear
+  using 1 OpenMP thread(s) per MPI task
+units lj
+dimension 3
+boundary p p p
+atom_style atomic
+processors 1 1 1
+comm_style brick
+newton on
+lattice fcc 0.8442 origin 0.25 0.25 0.25
+Lattice spacing in x,y,z = 1.6795962 1.6795962 1.6795962
+region box block 0 6 0 6 0 6 units lattice
+create_box 2 box
+Created orthogonal box = (0 0 0) to (10.077577 10.077577 10.077577)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 864 atoms
+  using lattice units in orthogonal box = (0 0 0) to (10.077577 10.077577 10.077577)
+  create_atoms CPU = 0.000 seconds
+region upper block INF INF INF INF 3 6 units lattice
+set region upper type 2
+Setting atom values ...
+  432 settings made for type
+mass * 1.0
+pair_style lj/cut 2.4
+pair_coeff 1 1 1.00 1.00 2.4
+pair_coeff 1 2 1.10 0.98 2.4
+pair_coeff 2 2 0.85 0.95 2.4
+pair_modify shift no tail no
+neighbor 0.3 bin
+neigh_modify delay 0 every 1 check yes
+timestep 0
+fix integrate all nve
+compute ctype all count/type atom
+fix mc all atom/swap 1 864 24681357 1.0 semi-grand yes types 1 2 mu 0 0.20000000000000001 ke no
+variable epa equal pe/atoms
+thermo_style custom step atoms pe v_epa c_ctype[1] c_ctype[2] f_mc[1] f_mc[2]
+thermo_modify norm no format float %.17g
+thermo 1
+dump labels all custom 25 serial_atom.types.dump id type
+dump_modify labels sort id
+print "REVISION_PRODUCTION_BEGIN"
+REVISION_PRODUCTION_BEGIN
+run 20
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 2.7
+  ghost atom cutoff = 2.7
+  binsize = 1.35, bins = 8 8 8
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.138 | 3.138 | 3.138 Mbytes
+   Step        Atoms        PotEng         v_epa        c_ctype[1]     c_ctype[2]      f_mc[1]        f_mc[2]    
+         0         864  -5100.2453506367292 -5.9030617484221404 432 432 0 0
+         1         864  -5715.7756738467124 -6.61548110398925 562 302 864 580
+         2         864  -5774.3090540220828 -6.6832280717848178 600 264 1728 1100
+         3         864  -5775.6510561305677 -6.6847813149659352 607 257 2592 1617
+         4         864  -5777.8818876582282 -6.6873632959007274 605 259 3456 2163
+         5         864  -5778.5727823282914 -6.6881629425095968 611 253 4320 2685
+         6         864  -5783.3165220036562 -6.6936533819486765 616 248 5184 3200
+         7         864  -5765.2383339949938 -6.6727295532349462 591 273 6048 3701
+         8         864  -5766.0201376186906 -6.6736344185401508 594 270 6912 4198
+         9         864  -5768.9020370529297 -6.6769699502927429 600 264 7776 4694
+        10         864  -5760.3256713072014 -6.6670436010500014 594 270 8640 5210
+        11         864  -5779.3598085852354 -6.6890738525292077 607 257 9504 5715
+        12         864  -5759.0794928261594 -6.6656012648450922 593 271 10368 6213
+        13         864  -5780.1536137129087 -6.6899926084640144 605 259 11232 6721
+        14         864  -5777.133012291155 -6.6864965420036517 602 262 12096 7242
+        15         864  -5777.873500453753 -6.6873535884881399 610 254 12960 7744
+        16         864  -5763.5877084040812 -6.6708191069491685 597 267 13824 8263
+        17         864  -5770.856086621925 -6.679231581738339 605 259 14688 8779
+        18         864  -5778.5395647401774 -6.688124496227057 600 264 15552 9298
+        19         864  -5751.4056310922815 -6.6567194804308816 583 281 16416 9805
+        20         864  -5766.609502056117 -6.6743165533056912 594 270 17280 10314
+Loop time of 8.30224 on 1 procs for 20 steps with 864 atoms
+
+99.8% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0.009513   | 0.009513   | 0.009513   |   0.0 |  0.11
+Neigh   | 0.017306   | 0.017306   | 0.017306   |   0.0 |  0.21
+Comm    | 0.00061477 | 0.00061477 | 0.00061477 |   0.0 |  0.01
+Output  | 0.00017738 | 0.00017738 | 0.00017738 |   0.0 |  0.00
+Modify  | 8.2745     | 8.2745     | 8.2745     |   0.0 | 99.67
+Other   |            | 0.0001569  |            |       |  0.00
+
+Nlocal:            864 ave         864 max         864 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           2052 ave        2052 max        2052 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          33696 ave       33696 max       33696 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 33696
+Ave neighs/atom = 39
+Neighbor list builds = 40
+Dangerous builds = 0
+print "REVISION_PRODUCTION_END"
+REVISION_PRODUCTION_END
+write_dump all custom serial_atom.final.dump id type x y z modify sort id format float %.17g
+Total wall time: 0:00:08

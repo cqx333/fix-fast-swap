@@ -1,0 +1,2088 @@
+LAMMPS (17 Apr 2024 - Development)
+  using 1 OpenMP thread(s) per MPI task
+clear
+  using 1 OpenMP thread(s) per MPI task
+units lj
+dimension 3
+boundary p p p
+atom_style atomic
+processors 1 1 1
+read_data "incremental/checkpoints/dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.data"
+Reading data file ...
+  orthogonal box = (0 0 0) to (6.7183848 6.7183848 13.43677)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  512 atoms
+  read_data CPU = 0.001 seconds
+mass 1 1
+mass 2 1
+pair_style lj/cut 2.4
+pair_coeff 1 1 1.00 1.00 2.4
+pair_coeff 1 2 1.10 0.98 2.4
+pair_coeff 2 2 0.85 0.95 2.4
+neighbor 0.3 bin
+neigh_modify delay 0 every 1 check yes
+timestep 0.0
+fix integrate all nve
+thermo_style custom step atoms pe
+thermo_modify norm no format float %.17g
+thermo 1
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 2.7
+  ghost atom cutoff = 2.7
+  binsize = 1.35, bins = 5 5 10
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.115 | 3.115 | 3.115 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2636.2497716210223
+Loop time of 5.07e-07 on 1 procs for 0 steps with 512 atoms
+
+197.2% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 5.07e-07   |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+compute ids all property/local patom1 patom2
+compute ep all pair/local eng
+set atom 6 type 2
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0000.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 2.7
+  ghost atom cutoff = 2.7
+  binsize = 1.35, bins = 5 5 10
+  3 neighbor lists, perpetual/occasional/extra = 1 2 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/atomonly/newton
+      stencil: half/bin/3d
+      bin: standard
+  (2) compute property/local, occasional, copy from (1)
+      attributes: half, newton on
+      pair build: copy
+      stencil: none
+      bin: none
+  (3) compute pair/local, occasional, copy from (1)
+      attributes: half, newton on
+      pair build: copy
+      stencil: none
+      bin: none
+Per MPI rank memory allocation (min/avg/max) = 3.115 | 3.115 | 3.115 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2636.2497716210223
+Loop time of 5.63e-07 on 1 procs for 0 steps with 512 atoms
+
+177.6% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 5.63e-07   |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 0 6 2 1 before $(v_eg:%.17g)"
+CLOSURE 0 6 2 1 before -2636.24977162102
+variable eg delete
+set atom 6 type 1
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0000.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2635.9628584958195
+Loop time of 5.78e-07 on 1 procs for 0 steps with 512 atoms
+
+173.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 5.78e-07   |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 0 6 2 1 after $(v_eg:%.17g)"
+CLOSURE 0 6 2 1 after -2635.96285849582
+variable eg delete
+set atom 6 type 2
+Setting atom values ...
+  1 settings made for type
+set atom 13 type 1
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0001.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2636.2497716210223
+Loop time of 5.2e-07 on 1 procs for 0 steps with 512 atoms
+
+192.3% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 5.2e-07    |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 1 13 1 2 before $(v_eg:%.17g)"
+CLOSURE 1 13 1 2 before -2636.24977162102
+variable eg delete
+set atom 13 type 2
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0001.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2636.2234742586415
+Loop time of 5.29e-07 on 1 procs for 0 steps with 512 atoms
+
+189.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 5.29e-07   |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 1 13 1 2 after $(v_eg:%.17g)"
+CLOSURE 1 13 1 2 after -2636.2234742586402
+variable eg delete
+set atom 13 type 1
+Setting atom values ...
+  1 settings made for type
+set atom 463 type 1
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0002.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2636.2497716210223
+Loop time of 5.8e-07 on 1 procs for 0 steps with 512 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 5.8e-07    |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 2 463 1 2 before $(v_eg:%.17g)"
+CLOSURE 2 463 1 2 before -2636.24977162102
+variable eg delete
+set atom 463 type 2
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0002.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2634.0282246493366
+Loop time of 5.4e-07 on 1 procs for 0 steps with 512 atoms
+
+185.2% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 5.4e-07    |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 2 463 1 2 after $(v_eg:%.17g)"
+CLOSURE 2 463 1 2 after -2634.0282246493398
+variable eg delete
+set atom 463 type 1
+Setting atom values ...
+  1 settings made for type
+set atom 186 type 1
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0003.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2636.2497716210223
+Loop time of 5.17e-07 on 1 procs for 0 steps with 512 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 5.17e-07   |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 3 186 1 2 before $(v_eg:%.17g)"
+CLOSURE 3 186 1 2 before -2636.24977162102
+variable eg delete
+set atom 186 type 2
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0003.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2634.6689239398934
+Loop time of 5.09e-07 on 1 procs for 0 steps with 512 atoms
+
+196.5% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 5.09e-07   |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 3 186 1 2 after $(v_eg:%.17g)"
+CLOSURE 3 186 1 2 after -2634.6689239398902
+variable eg delete
+set atom 186 type 1
+Setting atom values ...
+  1 settings made for type
+set atom 190 type 1
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0004.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2636.2497716210223
+Loop time of 5.89e-07 on 1 procs for 0 steps with 512 atoms
+
+169.8% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 5.89e-07   |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 4 190 1 2 before $(v_eg:%.17g)"
+CLOSURE 4 190 1 2 before -2636.24977162102
+variable eg delete
+set atom 190 type 2
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0004.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2635.7392796648078
+Loop time of 5.24e-07 on 1 procs for 0 steps with 512 atoms
+
+190.8% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 5.24e-07   |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 4 190 1 2 after $(v_eg:%.17g)"
+CLOSURE 4 190 1 2 after -2635.7392796648101
+variable eg delete
+set atom 190 type 1
+Setting atom values ...
+  1 settings made for type
+set atom 497 type 1
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0005.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2636.2497716210223
+Loop time of 4.2e-07 on 1 procs for 0 steps with 512 atoms
+
+238.1% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 4.2e-07    |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 5 497 1 2 before $(v_eg:%.17g)"
+CLOSURE 5 497 1 2 before -2636.24977162102
+variable eg delete
+set atom 497 type 2
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0005.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2634.6595697414732
+Loop time of 4.84e-07 on 1 procs for 0 steps with 512 atoms
+
+206.6% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 4.84e-07   |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 5 497 1 2 after $(v_eg:%.17g)"
+CLOSURE 5 497 1 2 after -2634.65956974147
+variable eg delete
+set atom 497 type 1
+Setting atom values ...
+  1 settings made for type
+set atom 372 type 2
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0006.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2636.2497716210223
+Loop time of 5.18e-07 on 1 procs for 0 steps with 512 atoms
+
+193.1% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 5.18e-07   |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 6 372 2 1 before $(v_eg:%.17g)"
+CLOSURE 6 372 2 1 before -2636.24977162102
+variable eg delete
+set atom 372 type 1
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0006.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2637.0803590945557
+Loop time of 5.93e-07 on 1 procs for 0 steps with 512 atoms
+
+168.6% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 5.93e-07   |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 6 372 2 1 after $(v_eg:%.17g)"
+CLOSURE 6 372 2 1 after -2637.0803590945602
+variable eg delete
+set atom 372 type 2
+Setting atom values ...
+  1 settings made for type
+set atom 379 type 2
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0007.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2636.2497716210223
+Loop time of 4.37e-07 on 1 procs for 0 steps with 512 atoms
+
+228.8% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 4.37e-07   |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 7 379 2 1 before $(v_eg:%.17g)"
+CLOSURE 7 379 2 1 before -2636.24977162102
+variable eg delete
+set atom 379 type 1
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0007.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2634.6133753527515
+Loop time of 5.81e-07 on 1 procs for 0 steps with 512 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 5.81e-07   |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 7 379 2 1 after $(v_eg:%.17g)"
+CLOSURE 7 379 2 1 after -2634.6133753527502
+variable eg delete
+set atom 379 type 2
+Setting atom values ...
+  1 settings made for type
+set atom 366 type 1
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0008.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2636.2497716210223
+Loop time of 5.13e-07 on 1 procs for 0 steps with 512 atoms
+
+194.9% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 5.13e-07   |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 8 366 1 2 before $(v_eg:%.17g)"
+CLOSURE 8 366 1 2 before -2636.24977162102
+variable eg delete
+set atom 366 type 2
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0008.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2634.5109158737278
+Loop time of 5.29e-07 on 1 procs for 0 steps with 512 atoms
+
+189.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 5.29e-07   |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 8 366 1 2 after $(v_eg:%.17g)"
+CLOSURE 8 366 1 2 after -2634.51091587373
+variable eg delete
+set atom 366 type 1
+Setting atom values ...
+  1 settings made for type
+set atom 220 type 1
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0009.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2636.2497716210223
+Loop time of 5.17e-07 on 1 procs for 0 steps with 512 atoms
+
+193.4% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 5.17e-07   |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 9 220 1 2 before $(v_eg:%.17g)"
+CLOSURE 9 220 1 2 before -2636.24977162102
+variable eg delete
+set atom 220 type 2
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0009.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2636.8920296511719
+Loop time of 5.27e-07 on 1 procs for 0 steps with 512 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 5.27e-07   |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 9 220 1 2 after $(v_eg:%.17g)"
+CLOSURE 9 220 1 2 after -2636.8920296511701
+variable eg delete
+set atom 220 type 1
+Setting atom values ...
+  1 settings made for type
+set atom 301 type 2
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0010.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2636.2497716210223
+Loop time of 5.32e-07 on 1 procs for 0 steps with 512 atoms
+
+188.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 5.32e-07   |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 10 301 2 1 before $(v_eg:%.17g)"
+CLOSURE 10 301 2 1 before -2636.24977162102
+variable eg delete
+set atom 301 type 1
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0010.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2632.7225945473551
+Loop time of 5.42e-07 on 1 procs for 0 steps with 512 atoms
+
+184.5% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 5.42e-07   |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 10 301 2 1 after $(v_eg:%.17g)"
+CLOSURE 10 301 2 1 after -2632.7225945473601
+variable eg delete
+set atom 301 type 2
+Setting atom values ...
+  1 settings made for type
+set atom 297 type 1
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0011.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2636.2497716210223
+Loop time of 5.22e-07 on 1 procs for 0 steps with 512 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 5.22e-07   |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 11 297 1 2 before $(v_eg:%.17g)"
+CLOSURE 11 297 1 2 before -2636.24977162102
+variable eg delete
+set atom 297 type 2
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0011.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2635.1345208865505
+Loop time of 5.47e-07 on 1 procs for 0 steps with 512 atoms
+
+182.8% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 5.47e-07   |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 11 297 1 2 after $(v_eg:%.17g)"
+CLOSURE 11 297 1 2 after -2635.13452088655
+variable eg delete
+set atom 297 type 1
+Setting atom values ...
+  1 settings made for type
+set atom 223 type 1
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0012.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2636.2497716210223
+Loop time of 5.24e-07 on 1 procs for 0 steps with 512 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 5.24e-07   |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 12 223 1 2 before $(v_eg:%.17g)"
+CLOSURE 12 223 1 2 before -2636.24977162102
+variable eg delete
+set atom 223 type 2
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0012.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2638.0438467963363
+Loop time of 6.04e-07 on 1 procs for 0 steps with 512 atoms
+
+165.6% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 6.04e-07   |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 12 223 1 2 after $(v_eg:%.17g)"
+CLOSURE 12 223 1 2 after -2638.0438467963399
+variable eg delete
+set atom 223 type 1
+Setting atom values ...
+  1 settings made for type
+set atom 313 type 2
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0013.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2636.2497716210223
+Loop time of 5.47e-07 on 1 procs for 0 steps with 512 atoms
+
+182.8% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 5.47e-07   |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 13 313 2 1 before $(v_eg:%.17g)"
+CLOSURE 13 313 2 1 before -2636.24977162102
+variable eg delete
+set atom 313 type 1
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0013.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2636.6676405458657
+Loop time of 5.43e-07 on 1 procs for 0 steps with 512 atoms
+
+184.2% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 5.43e-07   |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 13 313 2 1 after $(v_eg:%.17g)"
+CLOSURE 13 313 2 1 after -2636.6676405458702
+variable eg delete
+set atom 313 type 2
+Setting atom values ...
+  1 settings made for type
+set atom 397 type 2
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0014.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2636.2497716210223
+Loop time of 5.5e-07 on 1 procs for 0 steps with 512 atoms
+
+181.8% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 5.5e-07    |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 14 397 2 1 before $(v_eg:%.17g)"
+CLOSURE 14 397 2 1 before -2636.24977162102
+variable eg delete
+set atom 397 type 1
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0014.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2634.814521097072
+Loop time of 5.3e-07 on 1 procs for 0 steps with 512 atoms
+
+188.7% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 5.3e-07    |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 14 397 2 1 after $(v_eg:%.17g)"
+CLOSURE 14 397 2 1 after -2634.8145210970702
+variable eg delete
+set atom 397 type 2
+Setting atom values ...
+  1 settings made for type
+set atom 168 type 2
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0015.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2636.2497716210223
+Loop time of 5.34e-07 on 1 procs for 0 steps with 512 atoms
+
+187.3% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 5.34e-07   |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 15 168 2 1 before $(v_eg:%.17g)"
+CLOSURE 15 168 2 1 before -2636.24977162102
+variable eg delete
+set atom 168 type 1
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0015.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2636.2543338713695
+Loop time of 5.27e-07 on 1 procs for 0 steps with 512 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 5.27e-07   |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 15 168 2 1 after $(v_eg:%.17g)"
+CLOSURE 15 168 2 1 after -2636.2543338713699
+variable eg delete
+set atom 168 type 2
+Setting atom values ...
+  1 settings made for type
+set atom 120 type 2
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0016.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2636.2497716210223
+Loop time of 5.32e-07 on 1 procs for 0 steps with 512 atoms
+
+188.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 5.32e-07   |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 16 120 2 1 before $(v_eg:%.17g)"
+CLOSURE 16 120 2 1 before -2636.24977162102
+variable eg delete
+set atom 120 type 1
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0016.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2637.0413369362891
+Loop time of 5.37e-07 on 1 procs for 0 steps with 512 atoms
+
+186.2% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 5.37e-07   |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 16 120 2 1 after $(v_eg:%.17g)"
+CLOSURE 16 120 2 1 after -2637.04133693629
+variable eg delete
+set atom 120 type 2
+Setting atom values ...
+  1 settings made for type
+set atom 200 type 1
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0017.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2636.2497716210223
+Loop time of 5.32e-07 on 1 procs for 0 steps with 512 atoms
+
+375.9% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 5.32e-07   |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 17 200 1 2 before $(v_eg:%.17g)"
+CLOSURE 17 200 1 2 before -2636.24977162102
+variable eg delete
+set atom 200 type 2
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0017.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2637.2578816267624
+Loop time of 5.81e-07 on 1 procs for 0 steps with 512 atoms
+
+172.1% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 5.81e-07   |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 17 200 1 2 after $(v_eg:%.17g)"
+CLOSURE 17 200 1 2 after -2637.2578816267601
+variable eg delete
+set atom 200 type 1
+Setting atom values ...
+  1 settings made for type
+set atom 235 type 1
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0018.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2636.2497716210223
+Loop time of 5.48e-07 on 1 procs for 0 steps with 512 atoms
+
+365.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 5.48e-07   |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 18 235 1 2 before $(v_eg:%.17g)"
+CLOSURE 18 235 1 2 before -2636.24977162102
+variable eg delete
+set atom 235 type 2
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0018.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2634.957978007174
+Loop time of 5.87e-07 on 1 procs for 0 steps with 512 atoms
+
+170.4% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 5.87e-07   |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 18 235 1 2 after $(v_eg:%.17g)"
+CLOSURE 18 235 1 2 after -2634.9579780071699
+variable eg delete
+set atom 235 type 1
+Setting atom values ...
+  1 settings made for type
+set atom 467 type 1
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0019.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2636.2497716210223
+Loop time of 5.13e-07 on 1 procs for 0 steps with 512 atoms
+
+194.9% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 5.13e-07   |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 19 467 1 2 before $(v_eg:%.17g)"
+CLOSURE 19 467 1 2 before -2636.24977162102
+variable eg delete
+set atom 467 type 2
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0019.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2634.888258682005
+Loop time of 5.94e-07 on 1 procs for 0 steps with 512 atoms
+
+168.4% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 5.94e-07   |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 19 467 1 2 after $(v_eg:%.17g)"
+CLOSURE 19 467 1 2 after -2634.88825868201
+variable eg delete
+set atom 467 type 1
+Setting atom values ...
+  1 settings made for type
+set atom 442 type 1
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0020.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2636.2497716210223
+Loop time of 5.2e-07 on 1 procs for 0 steps with 512 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 5.2e-07    |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 20 442 1 2 before $(v_eg:%.17g)"
+CLOSURE 20 442 1 2 before -2636.24977162102
+variable eg delete
+set atom 442 type 2
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0020.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2635.197249574393
+Loop time of 5.2e-07 on 1 procs for 0 steps with 512 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 5.2e-07    |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 20 442 1 2 after $(v_eg:%.17g)"
+CLOSURE 20 442 1 2 after -2635.1972495743898
+variable eg delete
+set atom 442 type 1
+Setting atom values ...
+  1 settings made for type
+set atom 5 type 1
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0021.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2636.2497716210223
+Loop time of 5.26e-07 on 1 procs for 0 steps with 512 atoms
+
+380.2% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 5.26e-07   |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 21 5 1 2 before $(v_eg:%.17g)"
+CLOSURE 21 5 1 2 before -2636.24977162102
+variable eg delete
+set atom 5 type 2
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0021.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2635.5845948934902
+Loop time of 5.44e-07 on 1 procs for 0 steps with 512 atoms
+
+183.8% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 5.44e-07   |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 21 5 1 2 after $(v_eg:%.17g)"
+CLOSURE 21 5 1 2 after -2635.5845948934898
+variable eg delete
+set atom 5 type 1
+Setting atom values ...
+  1 settings made for type
+set atom 11 type 1
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0022.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2636.2497716210223
+Loop time of 5.13e-07 on 1 procs for 0 steps with 512 atoms
+
+194.9% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 5.13e-07   |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 22 11 1 2 before $(v_eg:%.17g)"
+CLOSURE 22 11 1 2 before -2636.24977162102
+variable eg delete
+set atom 11 type 2
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0022.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2636.0386360333318
+Loop time of 5.27e-07 on 1 procs for 0 steps with 512 atoms
+
+189.8% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 5.27e-07   |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 22 11 1 2 after $(v_eg:%.17g)"
+CLOSURE 22 11 1 2 after -2636.03863603333
+variable eg delete
+set atom 11 type 1
+Setting atom values ...
+  1 settings made for type
+set atom 66 type 2
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0023.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2636.2497716210223
+Loop time of 5.15e-07 on 1 procs for 0 steps with 512 atoms
+
+194.2% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 5.15e-07   |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 23 66 2 1 before $(v_eg:%.17g)"
+CLOSURE 23 66 2 1 before -2636.24977162102
+variable eg delete
+set atom 66 type 1
+Setting atom values ...
+  1 settings made for type
+dump pairs all local 1 incremental/raw/closure_mobile__dynamic__lj_cut__p1__s24681357__atom__dtbase__from500.0023.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pairs format float %.17g
+run 0
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Per MPI rank memory allocation (min/avg/max) = 4.488 | 4.488 | 4.488 Mbytes
+   Step        Atoms        PotEng    
+         0         512  -2637.3337829327493
+Loop time of 4.98e-07 on 1 procs for 0 steps with 512 atoms
+
+200.8% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 4.98e-07   |            |       |100.00
+
+Nlocal:            512 ave         512 max         512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           1831 ave        1831 max        1831 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:          17335 ave       17335 max       17335 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 17335
+Ave neighs/atom = 33.857422
+Neighbor list builds = 0
+Dangerous builds = 0
+undump pairs
+variable eg equal pe
+print "CLOSURE 23 66 2 1 after $(v_eg:%.17g)"
+CLOSURE 23 66 2 1 after -2637.3337829327502
+variable eg delete
+set atom 66 type 2
+Setting atom values ...
+  1 settings made for type
+Total wall time: 0:00:00

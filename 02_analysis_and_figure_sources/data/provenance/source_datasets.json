@@ -1,0 +1,7 @@
+{
+  "core_status_sha256": "61ee11dc77d32614a87ff3473d10dd06552266444d0474db2d722ebe106ee51f",
+  "incremental_status_sha256": "1f468206938456c85646463fad72a54102c426d66bef49c2952b3485e8bb7cb6",
+  "three_d_status_sha256": "1b3a56a9d52056ad1878773741f66ee1a509ee3664b8781e8e466fa70a2c518d",
+  "three_d_host": "node05",
+  "current_rng_library_sha256": "5fa13058c965a2f0ffec776343acce4bc021a5f6988ad2937a82502b8cf2156d"
+}

@@ -1,141 +1,78 @@
 # fix fast/swap
 
-`fix fast/swap` is a LAMMPS Monte Carlo fix for semi-grand-canonical
-type-swap sampling in atomic systems with pairwise-additive interaction models.
-It preserves the usual SGC-MC Metropolis transition rule while replacing
-repeated global potential-energy reevaluation with an exact localized
-pair-energy difference for a trial atom-type change.
+Localized semi-grand-canonical type substitutions for LAMMPS, using the
+existing pair-style `single()` interface and a full neighbor list.
+This is the source/data companion to **Fast Semi-Grand-Canonical Type-Swap Monte Carlo in LAMMPS via Localized Energy-Difference Evaluation for Pairwise-Additive Interaction Models** (CPC manuscript under revision).
 
-This repository is prepared as the code companion for the CPC manuscript:
+## Snapshot
 
-**Fast Semi-Grand-Canonical Type-Swap Monte Carlo in LAMMPS via Localized
-Energy-Difference Evaluation for Pairwise-Additive Interaction Models**
+- Prepared release candidate: `2026.10.21-r2`; not an assertion that a release has been published.
+- Algorithm source: rank-local RNG initialization revision **20261020**.
+- Tested LAMMPS snapshot: **17 Apr 2024 (Development)**; GNU C++ 15.3.0 and MPICH 5.0.2.
+- Repository: https://github.com/cqx333/fix-fast-swap
+- Archival DOI for this version: https://doi.org/10.5281/zenodo.23551995.
+- Previous archival record: https://doi.org/10.5281/zenodo.20740858.
 
-## Repository layout
+The new-version DOI was reserved in the author's Zenodo draft. The link becomes
+publicly available when that record is published; DOI reservation alone is not publication.
 
-```text
-src/MC/
-  fix_fast_swap.cpp
-  fix_fast_swap.h
-
-examples/
-  in.exact__lj_cut__fast
-  in.exact__lj_cut__atom
-  in.exact__ternary_lj_cut__fast
-  in.exact__morse__fast
-  in.exact__table_lj__fast
-  in.exact__unequal_lj_cut__fast
-  in.parallel24_pair__lj_cut__fast
-  tables/pair_lj.table
-
-benchmark_workflow/
-  run_all.sh
-  submit_slurm.sh
-  diagnose_lmp_binary.sh
-  scripts/
-  tables/
-
-docs/
-  INSTALL.md
-  SUPPORTED_SCOPE.md
-```
-
-## Basic LAMMPS syntax
-
-```lammps
-fix ID group-ID fast/swap Nevery Ncycle T seed types N type1 type2 ... typeN mu mu1 mu2 ... muN
-```
-
-Optional single-rank energy-closure diagnostics:
-
-```lammps
-fix ID group-ID fast/swap Nevery Ncycle T seed types N ... mu ... check yes Period Tolerance
-```
-
-Example:
-
-```lammps
-fix mc all fast/swap 1 ${ncycle} ${tmc} ${seed} types 2 1 2 mu 0.0 0.2
-```
-
-Here `Ncycle` is the number of attempted type-swap moves made whenever the fix
-is invoked. An MC sweep in the manuscript corresponds to `Ncycle = N_atoms`.
+Only `src/MC/fix_fast_swap.cpp` and `.h` are installed into LAMMPS.
+See `docs/SOURCE_SNAPSHOT.md` for exact hashes and runtime verification.
+Other LAMMPS releases require compatibility checks; this is not a complete LAMMPS distribution.
 
 ## Quick start
 
-Copy the source files into the LAMMPS `src/MC` package directory:
-
 ```bash
-cp src/MC/fix_fast_swap.cpp /path/to/lammps/src/MC/
-cp src/MC/fix_fast_swap.h   /path/to/lammps/src/MC/
-```
-
-Build LAMMPS with the MC package and any pair-style packages required by your
-inputs. A typical CMake build is:
-
-```bash
-cmake ../cmake \
-  -DCMAKE_BUILD_TYPE=Release \
-  -DBUILD_MPI=yes \
-  -DPKG_MC=yes
-cmake --build . -j 4
-```
-
-Then run a minimal example:
-
-```bash
+bash install_to_lammps.sh /path/to/lammps
+# Configure/build as described in docs/INSTALL.md, then:
 cd examples
-mkdir -p results
-mpirun -np 1 /path/to/lmp_mpi -in in.exact__lj_cut__fast
+mpirun -np 1 /path/to/lmp_mpi -in in.lj_fast
+mpirun -np 1 /path/to/lmp_mpi -in in.lj_reference
 ```
 
-More detailed installation notes are in `docs/INSTALL.md`.
+Syntax:
+```text
+fix ID group-ID fast/swap Nevery Ntrial T seed types K t1 ... tK mu mu1 ... muK
+```
+`Ntrial` is a count of global attempted substitutions, not a swap fraction.
+One sweep is `N` global attempts for `N` atoms. The optional `check yes period tolerance`
+diagnostic uses a full-system `single()` enumeration, not an independent force-path reference.
 
-## Validation and benchmark workflow
+## Reproduction
 
-The `benchmark_workflow/` directory contains the workflow used for the paper
-validation and performance benchmarks. From that directory:
+- `benchmark_workflow/`: complete inputs, prepared reference states, retained reference
+  logs and offline tests for the 206-task affected-parallel recomputation. It deliberately
+  does not rerun unaffected `atom/swap` or single-rank records. Its original README
+  specifies node-specific timing checks and source/library identity requirements.
+- `02_analysis_and_figure_sources/`: curated paired observations, provenance and plotting
+  programs. From that directory run `python update_assets.py` after installing requirements.
+  This regenerates the updated validation figures/statistical tables. It does not
+  regenerate retained closure/exact assets. The application plotting sources are
+  also included; see `application/REPRODUCE_FIGURE_8.md` and the separate data archive.
+- Zenodo companion archives: full completed raw outputs and the phase-diagram
+  workflow, parameters, observations and analysis.
 
+Offline checks, without launching MPI simulations:
 ```bash
-bash run_all.sh /path/to/lmp_mpi
+python -m unittest discover -s benchmark_workflow/tests
+python benchmark_workflow/scripts/workflow.py --dry-run --output results_dryrun
 ```
+The dry run renders input files but launches no simulation. Fresh performance timings
+need a consistent machine/runtime and should not be pooled with unlike geometries.
 
-Useful subsets:
+## Scope and limitations
 
-```bash
-SUITE=validation bash run_all.sh /path/to/lmp_mpi
-SUITE=size_scaling bash run_all.sh /path/to/lmp_mpi
-SUITE=strong_scaling bash run_all.sh /path/to/lmp_mpi
-SUITE=nonlj_parallel_scaling bash run_all.sh /path/to/lmp_mpi
-```
+See `docs/SUPPORTED_SCOPE.md`. Tested models include LJ/cut, table-LJ, Morse,
+Buckingham, Buckingham+Coul/cut, Coul/DSF, Yukawa, LJ+Yukawa overlay, ZBL,
+ternary types and unequal LJ cutoffs. Coverage is limited to documented settings;
+`single()` availability alone does not certify arbitrary modifiers or custom models.
+EAM/many-body, KSpace, topology and tail corrections are outside this implementation.
+It is not a replacement for grand-canonical particle exchange or VC-SGC sampling.
 
-The full raw data and publication figure scripts are archived in the companion
-Zenodo dataset.
+## Licence and citation
 
-## Supported scope
-
-The current implementation supports atomic systems whose potential energy can be
-written as a sum of pair terms that are accessible through the LAMMPS
-`pair->single()` interface. See `docs/SUPPORTED_SCOPE.md`.
-
-Validated examples include:
-
-- LJ/cut
-- tabulated LJ
-- Morse
-- Buckingham+Coul/cut
-- Coul/DSF
-- LJ+Yukawa hybrid/overlay
-- ZBL
-- unequal type-pair cutoffs
-- binary and ternary type-swap cases
-
-Unsupported cases include many-body pair styles, KSpace long-range energy
-terms, pair tail corrections, molecular topology terms, and charged type swaps
-with incompatible per-atom charges.
-
-## License
-
-This code is intended to be distributed under GPL-2.0-or-later, consistent with
-LAMMPS-derived source files. See `LICENSE`.
-
+Extension and derived software: GPL-2.0-or-later; see LICENSE and COPYING.
+Original notices in vendored sources are retained. Curated observations are CC BY 4.0;
+see LICENSE_DATA.txt. No editorial correspondence, access credentials or build binaries
+are included. Cite CITATION.cff and the actual archival version used. The preparation
+date/version here does not mint a new DOI or imply journal acceptance.

@@ -1,0 +1,1490 @@
+{
+  "runtime": {
+    "executable": "/home/chenqx/LAMMPS-opt/build-fast/lmp_mpi",
+    "executable_sha256": "5306c77555863c4e5db4e952af84d81780f2f5f140a71ad8edc057fe5c74197d",
+    "library": "/home/chenqx/LAMMPS-opt/build-fast/liblammps_mpi.so.0",
+    "library_sha256": "5fa13058c965a2f0ffec776343acce4bc021a5f6988ad2937a82502b8cf2156d",
+    "mpi_libraries": [
+      {
+        "path": "/home/chenqx/.conda/envs/lmp-fast/lib/libmpi.so.12",
+        "sha256": "bb9dd34c7ba72c43df3e4b8a100612275dc103217816473fe087ff7e0a887ab5"
+      }
+    ],
+    "rng_revision": "20261020",
+    "verifier_revision": "20261020-runtime-marker-v2",
+    "static_marker_found": false,
+    "runtime_marker_observed": true,
+    "diagnostics_directory": "/tmp/fast_swap_rng_f_ysbdwc",
+    "note": "Load and smoke checks only; run the statistical regression separately."
+  },
+  "jobs": [
+    {
+      "id": "serial_atom",
+      "kind": "atom",
+      "N": 864,
+      "grid": [
+        1,
+        1,
+        1
+      ],
+      "sweeps": 20,
+      "attempts": 17280.0,
+      "fallback": false,
+      "log_sha256": "09d8893cd0ad982225ec45b38c6f0fc6d1fb22db6a66d9d8e882e4d218e8b368",
+      "input_sha256": "c8fe7aea2a063c671b52e167929398e779d5097df411518de8a2343c79b115ae"
+    },
+    {
+      "id": "serial_fast",
+      "kind": "fast",
+      "N": 864,
+      "grid": [
+        1,
+        1,
+        1
+      ],
+      "sweeps": 20,
+      "attempts": 17280.0,
+      "fallback": false,
+      "log_sha256": "67b4f7deb339cb00f316baa7bd6e60b778e74ecbaf533ca4e43a07e5e9fe5cbd",
+      "input_sha256": "3d56ae8354f992a5eca209cf2532cd095b200bfaf97226e73fb62e6f2bc9e9fb"
+    },
+    {
+      "id": "fallback_fast",
+      "kind": "fast",
+      "N": 864,
+      "grid": [
+        1,
+        1,
+        2
+      ],
+      "sweeps": 20,
+      "attempts": 17280.0,
+      "fallback": true,
+      "log_sha256": "5298d2059972ec8cd3d0764f5f0aa7b1a5a466708ff252c967a3009c7a29055a",
+      "input_sha256": "51f09b2ad452b43a43b397b41f043dcf7c296f446b26c58db14ba6be8304c1a5"
+    },
+    {
+      "id": "lj_fast_24681357",
+      "kind": "fast",
+      "N": 6144,
+      "grid": [
+        2,
+        3,
+        4
+      ],
+      "sweeps": 600,
+      "attempts": 3686400.0,
+      "fallback": false,
+      "log_sha256": "d0bb773e4ea0f953ab0f42a8a49e0988d8fde3e8114721dae18317a1b46033cc",
+      "input_sha256": "b6b1a65708692ca51a6da23d5774323448241553218fe1beb3ed29920af7fee5",
+      "residues_mod6": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "translation_symmetry": [
+        {
+          "sweep": 0,
+          "fraction_sixfold_equal": 1.0
+        },
+        {
+          "sweep": 25,
+          "fraction_sixfold_equal": 0.119140625
+        },
+        {
+          "sweep": 50,
+          "fraction_sixfold_equal": 0.109375
+        },
+        {
+          "sweep": 75,
+          "fraction_sixfold_equal": 0.1171875
+        },
+        {
+          "sweep": 100,
+          "fraction_sixfold_equal": 0.119140625
+        },
+        {
+          "sweep": 125,
+          "fraction_sixfold_equal": 0.1201171875
+        },
+        {
+          "sweep": 150,
+          "fraction_sixfold_equal": 0.09765625
+        },
+        {
+          "sweep": 175,
+          "fraction_sixfold_equal": 0.119140625
+        },
+        {
+          "sweep": 200,
+          "fraction_sixfold_equal": 0.1123046875
+        },
+        {
+          "sweep": 225,
+          "fraction_sixfold_equal": 0.111328125
+        },
+        {
+          "sweep": 250,
+          "fraction_sixfold_equal": 0.1240234375
+        },
+        {
+          "sweep": 275,
+          "fraction_sixfold_equal": 0.1201171875
+        },
+        {
+          "sweep": 300,
+          "fraction_sixfold_equal": 0.12109375
+        },
+        {
+          "sweep": 325,
+          "fraction_sixfold_equal": 0.140625
+        },
+        {
+          "sweep": 350,
+          "fraction_sixfold_equal": 0.123046875
+        },
+        {
+          "sweep": 375,
+          "fraction_sixfold_equal": 0.125
+        },
+        {
+          "sweep": 400,
+          "fraction_sixfold_equal": 0.1064453125
+        },
+        {
+          "sweep": 425,
+          "fraction_sixfold_equal": 0.119140625
+        },
+        {
+          "sweep": 450,
+          "fraction_sixfold_equal": 0.1181640625
+        },
+        {
+          "sweep": 475,
+          "fraction_sixfold_equal": 0.10546875
+        },
+        {
+          "sweep": 500,
+          "fraction_sixfold_equal": 0.12890625
+        },
+        {
+          "sweep": 525,
+          "fraction_sixfold_equal": 0.119140625
+        },
+        {
+          "sweep": 550,
+          "fraction_sixfold_equal": 0.1123046875
+        },
+        {
+          "sweep": 575,
+          "fraction_sixfold_equal": 0.115234375
+        },
+        {
+          "sweep": 600,
+          "fraction_sixfold_equal": 0.1123046875
+        }
+      ]
+    },
+    {
+      "id": "lj_fast_24682357",
+      "kind": "fast",
+      "N": 6144,
+      "grid": [
+        2,
+        3,
+        4
+      ],
+      "sweeps": 600,
+      "attempts": 3686400.0,
+      "fallback": false,
+      "log_sha256": "8137d0e9e216d1955357e20a811a6ab0a8125356468f76bbeb02c93506e1c05d",
+      "input_sha256": "369ed192465480b1fba5bae9924d6b5765277013630dbeafc86a146e91ee21e7",
+      "residues_mod6": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "translation_symmetry": [
+        {
+          "sweep": 0,
+          "fraction_sixfold_equal": 1.0
+        },
+        {
+          "sweep": 25,
+          "fraction_sixfold_equal": 0.099609375
+        },
+        {
+          "sweep": 50,
+          "fraction_sixfold_equal": 0.1162109375
+        },
+        {
+          "sweep": 75,
+          "fraction_sixfold_equal": 0.1259765625
+        },
+        {
+          "sweep": 100,
+          "fraction_sixfold_equal": 0.1259765625
+        },
+        {
+          "sweep": 125,
+          "fraction_sixfold_equal": 0.123046875
+        },
+        {
+          "sweep": 150,
+          "fraction_sixfold_equal": 0.1240234375
+        },
+        {
+          "sweep": 175,
+          "fraction_sixfold_equal": 0.123046875
+        },
+        {
+          "sweep": 200,
+          "fraction_sixfold_equal": 0.099609375
+        },
+        {
+          "sweep": 225,
+          "fraction_sixfold_equal": 0.1201171875
+        },
+        {
+          "sweep": 250,
+          "fraction_sixfold_equal": 0.115234375
+        },
+        {
+          "sweep": 275,
+          "fraction_sixfold_equal": 0.1259765625
+        },
+        {
+          "sweep": 300,
+          "fraction_sixfold_equal": 0.126953125
+        },
+        {
+          "sweep": 325,
+          "fraction_sixfold_equal": 0.107421875
+        },
+        {
+          "sweep": 350,
+          "fraction_sixfold_equal": 0.115234375
+        },
+        {
+          "sweep": 375,
+          "fraction_sixfold_equal": 0.119140625
+        },
+        {
+          "sweep": 400,
+          "fraction_sixfold_equal": 0.1240234375
+        },
+        {
+          "sweep": 425,
+          "fraction_sixfold_equal": 0.13671875
+        },
+        {
+          "sweep": 450,
+          "fraction_sixfold_equal": 0.1171875
+        },
+        {
+          "sweep": 475,
+          "fraction_sixfold_equal": 0.1123046875
+        },
+        {
+          "sweep": 500,
+          "fraction_sixfold_equal": 0.1123046875
+        },
+        {
+          "sweep": 525,
+          "fraction_sixfold_equal": 0.1103515625
+        },
+        {
+          "sweep": 550,
+          "fraction_sixfold_equal": 0.1201171875
+        },
+        {
+          "sweep": 575,
+          "fraction_sixfold_equal": 0.1201171875
+        },
+        {
+          "sweep": 600,
+          "fraction_sixfold_equal": 0.10546875
+        }
+      ]
+    },
+    {
+      "id": "lj_fast_24683357",
+      "kind": "fast",
+      "N": 6144,
+      "grid": [
+        2,
+        3,
+        4
+      ],
+      "sweeps": 600,
+      "attempts": 3686400.0,
+      "fallback": false,
+      "log_sha256": "0a45c498e1f927f3eb092460eefb5c0982b705f6866db4fc57b13ee378f7f1dc",
+      "input_sha256": "2f1867acb49030f5afc47eaf0f1e791c359fb4d2645fc4ce622478673fb43cc5",
+      "residues_mod6": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "translation_symmetry": [
+        {
+          "sweep": 0,
+          "fraction_sixfold_equal": 1.0
+        },
+        {
+          "sweep": 25,
+          "fraction_sixfold_equal": 0.125
+        },
+        {
+          "sweep": 50,
+          "fraction_sixfold_equal": 0.109375
+        },
+        {
+          "sweep": 75,
+          "fraction_sixfold_equal": 0.123046875
+        },
+        {
+          "sweep": 100,
+          "fraction_sixfold_equal": 0.12109375
+        },
+        {
+          "sweep": 125,
+          "fraction_sixfold_equal": 0.1337890625
+        },
+        {
+          "sweep": 150,
+          "fraction_sixfold_equal": 0.1357421875
+        },
+        {
+          "sweep": 175,
+          "fraction_sixfold_equal": 0.1083984375
+        },
+        {
+          "sweep": 200,
+          "fraction_sixfold_equal": 0.1328125
+        },
+        {
+          "sweep": 225,
+          "fraction_sixfold_equal": 0.123046875
+        },
+        {
+          "sweep": 250,
+          "fraction_sixfold_equal": 0.1240234375
+        },
+        {
+          "sweep": 275,
+          "fraction_sixfold_equal": 0.1171875
+        },
+        {
+          "sweep": 300,
+          "fraction_sixfold_equal": 0.1201171875
+        },
+        {
+          "sweep": 325,
+          "fraction_sixfold_equal": 0.107421875
+        },
+        {
+          "sweep": 350,
+          "fraction_sixfold_equal": 0.1201171875
+        },
+        {
+          "sweep": 375,
+          "fraction_sixfold_equal": 0.1279296875
+        },
+        {
+          "sweep": 400,
+          "fraction_sixfold_equal": 0.109375
+        },
+        {
+          "sweep": 425,
+          "fraction_sixfold_equal": 0.134765625
+        },
+        {
+          "sweep": 450,
+          "fraction_sixfold_equal": 0.1103515625
+        },
+        {
+          "sweep": 475,
+          "fraction_sixfold_equal": 0.1044921875
+        },
+        {
+          "sweep": 500,
+          "fraction_sixfold_equal": 0.1015625
+        },
+        {
+          "sweep": 525,
+          "fraction_sixfold_equal": 0.123046875
+        },
+        {
+          "sweep": 550,
+          "fraction_sixfold_equal": 0.1025390625
+        },
+        {
+          "sweep": 575,
+          "fraction_sixfold_equal": 0.123046875
+        },
+        {
+          "sweep": 600,
+          "fraction_sixfold_equal": 0.12890625
+        }
+      ]
+    },
+    {
+      "id": "ideal_fast_24681357",
+      "kind": "fast",
+      "N": 6144,
+      "grid": [
+        2,
+        3,
+        4
+      ],
+      "sweeps": 600,
+      "attempts": 3686400.0,
+      "fallback": false,
+      "log_sha256": "892bd34e337a59a7d702972d4e4c7b3540710c7f24d2e997083ddc67890fde6d",
+      "input_sha256": "57f55f7ec5c50ec1f99a8d7a6cd0e52f2cea3f11afe4dddc9877cd0b67088b85",
+      "residues_mod6": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "translation_symmetry": [
+        {
+          "sweep": 0,
+          "fraction_sixfold_equal": 1.0
+        },
+        {
+          "sweep": 25,
+          "fraction_sixfold_equal": 0.0849609375
+        },
+        {
+          "sweep": 50,
+          "fraction_sixfold_equal": 0.0869140625
+        },
+        {
+          "sweep": 75,
+          "fraction_sixfold_equal": 0.07421875
+        },
+        {
+          "sweep": 100,
+          "fraction_sixfold_equal": 0.0830078125
+        },
+        {
+          "sweep": 125,
+          "fraction_sixfold_equal": 0.1025390625
+        },
+        {
+          "sweep": 150,
+          "fraction_sixfold_equal": 0.0888671875
+        },
+        {
+          "sweep": 175,
+          "fraction_sixfold_equal": 0.0849609375
+        },
+        {
+          "sweep": 200,
+          "fraction_sixfold_equal": 0.0869140625
+        },
+        {
+          "sweep": 225,
+          "fraction_sixfold_equal": 0.0908203125
+        },
+        {
+          "sweep": 250,
+          "fraction_sixfold_equal": 0.1044921875
+        },
+        {
+          "sweep": 275,
+          "fraction_sixfold_equal": 0.099609375
+        },
+        {
+          "sweep": 300,
+          "fraction_sixfold_equal": 0.1025390625
+        },
+        {
+          "sweep": 325,
+          "fraction_sixfold_equal": 0.0859375
+        },
+        {
+          "sweep": 350,
+          "fraction_sixfold_equal": 0.1044921875
+        },
+        {
+          "sweep": 375,
+          "fraction_sixfold_equal": 0.083984375
+        },
+        {
+          "sweep": 400,
+          "fraction_sixfold_equal": 0.091796875
+        },
+        {
+          "sweep": 425,
+          "fraction_sixfold_equal": 0.09375
+        },
+        {
+          "sweep": 450,
+          "fraction_sixfold_equal": 0.0947265625
+        },
+        {
+          "sweep": 475,
+          "fraction_sixfold_equal": 0.1025390625
+        },
+        {
+          "sweep": 500,
+          "fraction_sixfold_equal": 0.09765625
+        },
+        {
+          "sweep": 525,
+          "fraction_sixfold_equal": 0.080078125
+        },
+        {
+          "sweep": 550,
+          "fraction_sixfold_equal": 0.099609375
+        },
+        {
+          "sweep": 575,
+          "fraction_sixfold_equal": 0.0859375
+        },
+        {
+          "sweep": 600,
+          "fraction_sixfold_equal": 0.1005859375
+        }
+      ]
+    },
+    {
+      "id": "ideal_fast_24682357",
+      "kind": "fast",
+      "N": 6144,
+      "grid": [
+        2,
+        3,
+        4
+      ],
+      "sweeps": 600,
+      "attempts": 3686400.0,
+      "fallback": false,
+      "log_sha256": "a6bde2e59189d15bb4ae41c4b97eed18a0ee82f2f5f436dbdaeae1b6a21eec0c",
+      "input_sha256": "0055b963678130c13e44829db0a7aed2797a6e9627d6ad58babfd11aa97c94eb",
+      "residues_mod6": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "translation_symmetry": [
+        {
+          "sweep": 0,
+          "fraction_sixfold_equal": 1.0
+        },
+        {
+          "sweep": 25,
+          "fraction_sixfold_equal": 0.087890625
+        },
+        {
+          "sweep": 50,
+          "fraction_sixfold_equal": 0.1044921875
+        },
+        {
+          "sweep": 75,
+          "fraction_sixfold_equal": 0.111328125
+        },
+        {
+          "sweep": 100,
+          "fraction_sixfold_equal": 0.0830078125
+        },
+        {
+          "sweep": 125,
+          "fraction_sixfold_equal": 0.1005859375
+        },
+        {
+          "sweep": 150,
+          "fraction_sixfold_equal": 0.09375
+        },
+        {
+          "sweep": 175,
+          "fraction_sixfold_equal": 0.0830078125
+        },
+        {
+          "sweep": 200,
+          "fraction_sixfold_equal": 0.0849609375
+        },
+        {
+          "sweep": 225,
+          "fraction_sixfold_equal": 0.10546875
+        },
+        {
+          "sweep": 250,
+          "fraction_sixfold_equal": 0.087890625
+        },
+        {
+          "sweep": 275,
+          "fraction_sixfold_equal": 0.0908203125
+        },
+        {
+          "sweep": 300,
+          "fraction_sixfold_equal": 0.0869140625
+        },
+        {
+          "sweep": 325,
+          "fraction_sixfold_equal": 0.09765625
+        },
+        {
+          "sweep": 350,
+          "fraction_sixfold_equal": 0.0849609375
+        },
+        {
+          "sweep": 375,
+          "fraction_sixfold_equal": 0.0810546875
+        },
+        {
+          "sweep": 400,
+          "fraction_sixfold_equal": 0.091796875
+        },
+        {
+          "sweep": 425,
+          "fraction_sixfold_equal": 0.08984375
+        },
+        {
+          "sweep": 450,
+          "fraction_sixfold_equal": 0.07421875
+        },
+        {
+          "sweep": 475,
+          "fraction_sixfold_equal": 0.0966796875
+        },
+        {
+          "sweep": 500,
+          "fraction_sixfold_equal": 0.076171875
+        },
+        {
+          "sweep": 525,
+          "fraction_sixfold_equal": 0.0751953125
+        },
+        {
+          "sweep": 550,
+          "fraction_sixfold_equal": 0.091796875
+        },
+        {
+          "sweep": 575,
+          "fraction_sixfold_equal": 0.091796875
+        },
+        {
+          "sweep": 600,
+          "fraction_sixfold_equal": 0.1005859375
+        }
+      ]
+    },
+    {
+      "id": "ideal_fast_24683357",
+      "kind": "fast",
+      "N": 6144,
+      "grid": [
+        2,
+        3,
+        4
+      ],
+      "sweeps": 600,
+      "attempts": 3686400.0,
+      "fallback": false,
+      "log_sha256": "3ae160746ce2f64e1e5968668d4afb0d2a77e1b84df3d21f83cb5b4b5fb7bbe2",
+      "input_sha256": "99c68d550d92ac4eea4e97aaca6b10535a5ad3d74a9844f4b49f1234847d6f29",
+      "residues_mod6": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "translation_symmetry": [
+        {
+          "sweep": 0,
+          "fraction_sixfold_equal": 1.0
+        },
+        {
+          "sweep": 25,
+          "fraction_sixfold_equal": 0.08984375
+        },
+        {
+          "sweep": 50,
+          "fraction_sixfold_equal": 0.0859375
+        },
+        {
+          "sweep": 75,
+          "fraction_sixfold_equal": 0.099609375
+        },
+        {
+          "sweep": 100,
+          "fraction_sixfold_equal": 0.0966796875
+        },
+        {
+          "sweep": 125,
+          "fraction_sixfold_equal": 0.078125
+        },
+        {
+          "sweep": 150,
+          "fraction_sixfold_equal": 0.0908203125
+        },
+        {
+          "sweep": 175,
+          "fraction_sixfold_equal": 0.0771484375
+        },
+        {
+          "sweep": 200,
+          "fraction_sixfold_equal": 0.080078125
+        },
+        {
+          "sweep": 225,
+          "fraction_sixfold_equal": 0.0908203125
+        },
+        {
+          "sweep": 250,
+          "fraction_sixfold_equal": 0.095703125
+        },
+        {
+          "sweep": 275,
+          "fraction_sixfold_equal": 0.0849609375
+        },
+        {
+          "sweep": 300,
+          "fraction_sixfold_equal": 0.087890625
+        },
+        {
+          "sweep": 325,
+          "fraction_sixfold_equal": 0.0859375
+        },
+        {
+          "sweep": 350,
+          "fraction_sixfold_equal": 0.080078125
+        },
+        {
+          "sweep": 375,
+          "fraction_sixfold_equal": 0.09765625
+        },
+        {
+          "sweep": 400,
+          "fraction_sixfold_equal": 0.072265625
+        },
+        {
+          "sweep": 425,
+          "fraction_sixfold_equal": 0.1005859375
+        },
+        {
+          "sweep": 450,
+          "fraction_sixfold_equal": 0.0966796875
+        },
+        {
+          "sweep": 475,
+          "fraction_sixfold_equal": 0.087890625
+        },
+        {
+          "sweep": 500,
+          "fraction_sixfold_equal": 0.0830078125
+        },
+        {
+          "sweep": 525,
+          "fraction_sixfold_equal": 0.0888671875
+        },
+        {
+          "sweep": 550,
+          "fraction_sixfold_equal": 0.09375
+        },
+        {
+          "sweep": 575,
+          "fraction_sixfold_equal": 0.08203125
+        },
+        {
+          "sweep": 600,
+          "fraction_sixfold_equal": 0.09375
+        }
+      ]
+    }
+  ],
+  "hard_failures": [],
+  "statistical_review_flags": [
+    "lj/c_ctype[2]/0.25: variance interval block8 excludes one",
+    "lj/c_ctype[2]/0.25: variance interval block32 excludes one",
+    "lj/v_epa/0.25: variance interval block8 excludes one",
+    "lj/v_epa/0.25: variance interval block32 excludes one",
+    "lj/c_ctype[2]/0.5: variance interval block8 excludes one",
+    "lj/c_ctype[2]/0.5: variance interval block32 excludes one",
+    "lj/v_epa/0.5: variance interval block8 excludes one",
+    "lj/v_epa/0.5: variance interval block32 excludes one"
+  ],
+  "comparisons": [
+    {
+      "model": "lj",
+      "observable": "c_ctype[2]",
+      "discard": 0.25,
+      "per_seed": [
+        {
+          "mean": 0.3002788941241685,
+          "variance": 1.726595722566161e-05,
+          "se": 0.00023944366789472072,
+          "ess": 338.5138876432433,
+          "df": 6
+        },
+        {
+          "mean": 0.3005275458471914,
+          "variance": 1.6694198002324067e-05,
+          "se": 0.000287911730803196,
+          "ess": 436.27602367313284,
+          "df": 6
+        },
+        {
+          "mean": 0.30005803076496673,
+          "variance": 1.7481280444815788e-05,
+          "se": 0.00022313189052320956,
+          "ess": 402.7537720711291,
+          "df": 55
+        }
+      ],
+      "reference_source": [
+        {
+          "id": "parallel3d__lj_cut__p24__s24681357__atom",
+          "log_sha256": "2c1b159d2ea17e90ff3ee9d194b179d5a1c1fa9092d5f47aeaa983ac35cdd31c",
+          "binary_provenance": {
+            "executable_sha256": "5306c77555863c4e5db4e952af84d81780f2f5f140a71ad8edc057fe5c74197d",
+            "libraries": {
+              "liblammps_mpi.so.0": {
+                "path": "/home/chenqx/LAMMPS-opt/build-fast/liblammps_mpi.so.0",
+                "sha256": "7f55a477112226c840c035b252ce109b365b343072f6dc9a81e2f7d12d311373"
+              },
+              "libmpi.so.12": {
+                "path": "/home/chenqx/.conda/envs/lmp-fast/lib/libmpi.so.12.6.2",
+                "sha256": "bb9dd34c7ba72c43df3e4b8a100612275dc103217816473fe087ff7e0a887ab5"
+              },
+              "libfabric.so.1": {
+                "path": "/home/chenqx/.conda/envs/lmp-fast/lib/libfabric.so.1.32.0",
+                "sha256": "786ced2efa6598ee7f25209e23ddbee0032d93f3adb1c3caad4cc75538019e0c"
+              }
+            }
+          }
+        },
+        {
+          "id": "parallel3d__lj_cut__p24__s24682357__atom",
+          "log_sha256": "6150ae6fc300427a0c748e5877114c43de2358acb5d625413fb5829bbc0c99e7",
+          "binary_provenance": {
+            "executable_sha256": "5306c77555863c4e5db4e952af84d81780f2f5f140a71ad8edc057fe5c74197d",
+            "libraries": {
+              "liblammps_mpi.so.0": {
+                "path": "/home/chenqx/LAMMPS-opt/build-fast/liblammps_mpi.so.0",
+                "sha256": "7f55a477112226c840c035b252ce109b365b343072f6dc9a81e2f7d12d311373"
+              },
+              "libmpi.so.12": {
+                "path": "/home/chenqx/.conda/envs/lmp-fast/lib/libmpi.so.12.6.2",
+                "sha256": "bb9dd34c7ba72c43df3e4b8a100612275dc103217816473fe087ff7e0a887ab5"
+              },
+              "libfabric.so.1": {
+                "path": "/home/chenqx/.conda/envs/lmp-fast/lib/libfabric.so.1.32.0",
+                "sha256": "786ced2efa6598ee7f25209e23ddbee0032d93f3adb1c3caad4cc75538019e0c"
+              }
+            }
+          }
+        },
+        {
+          "id": "parallel3d__lj_cut__p24__s24683357__atom",
+          "log_sha256": "7045b8ec36288439d5bfab0e760ae68abd052d58f13bc8a5e78a46586fbc1fa7",
+          "binary_provenance": {
+            "executable_sha256": "5306c77555863c4e5db4e952af84d81780f2f5f140a71ad8edc057fe5c74197d",
+            "libraries": {
+              "liblammps_mpi.so.0": {
+                "path": "/home/chenqx/LAMMPS-opt/build-fast/liblammps_mpi.so.0",
+                "sha256": "7f55a477112226c840c035b252ce109b365b343072f6dc9a81e2f7d12d311373"
+              },
+              "libmpi.so.12": {
+                "path": "/home/chenqx/.conda/envs/lmp-fast/lib/libmpi.so.12.6.2",
+                "sha256": "bb9dd34c7ba72c43df3e4b8a100612275dc103217816473fe087ff7e0a887ab5"
+              },
+              "libfabric.so.1": {
+                "path": "/home/chenqx/.conda/envs/lmp-fast/lib/libfabric.so.1.32.0",
+                "sha256": "786ced2efa6598ee7f25209e23ddbee0032d93f3adb1c3caad4cc75538019e0c"
+              }
+            }
+          }
+        }
+      ],
+      "reference_statistics": [
+        {
+          "mean": 0.30036695075757575,
+          "variance": 2.403140469432279e-05,
+          "se": 0.0003959263498540053,
+          "ess": 171.61132860325083,
+          "df": 6
+        },
+        {
+          "mean": 0.30082672186807097,
+          "variance": 2.3941393147348708e-05,
+          "se": 0.0004532583949976424,
+          "ess": 122.2725153660528,
+          "df": 13
+        },
+        {
+          "mean": 0.3006917498152254,
+          "variance": 2.48661528395698e-05,
+          "se": 0.00043598624083753917,
+          "ess": 187.6190659535191,
+          "df": 6
+        }
+      ],
+      "mean_difference": -0.0003403172348484529,
+      "difference_ci95_halfwidth": 0.0007027268441480867,
+      "variance_ratio": 0.7062352654957937,
+      "variance_ratio_ci95_block8": [
+        0.6340249035089722,
+        0.7900792631368487
+      ],
+      "variance_ratio_ci95_block32": [
+        0.6357064141105374,
+        0.7871212608146373
+      ]
+    },
+    {
+      "model": "lj",
+      "observable": "v_epa",
+      "discard": 0.25,
+      "per_seed": [
+        {
+          "mean": -6.682156408875504,
+          "variance": 2.0494710885556053e-05,
+          "se": 0.0003025532374912815,
+          "ess": 334.84964784217885,
+          "df": 6
+        },
+        {
+          "mean": -6.681904574481086,
+          "variance": 2.1675439339941084e-05,
+          "se": 0.0003339820839657333,
+          "ess": 433.5145282573942,
+          "df": 6
+        },
+        {
+          "mean": -6.682412467370068,
+          "variance": 2.012293719441073e-05,
+          "se": 0.00023086289516399794,
+          "ess": 412.49666390115726,
+          "df": 55
+        }
+      ],
+      "reference_source": [
+        {
+          "id": "parallel3d__lj_cut__p24__s24681357__atom",
+          "log_sha256": "2c1b159d2ea17e90ff3ee9d194b179d5a1c1fa9092d5f47aeaa983ac35cdd31c",
+          "binary_provenance": {
+            "executable_sha256": "5306c77555863c4e5db4e952af84d81780f2f5f140a71ad8edc057fe5c74197d",
+            "libraries": {
+              "liblammps_mpi.so.0": {
+                "path": "/home/chenqx/LAMMPS-opt/build-fast/liblammps_mpi.so.0",
+                "sha256": "7f55a477112226c840c035b252ce109b365b343072f6dc9a81e2f7d12d311373"
+              },
+              "libmpi.so.12": {
+                "path": "/home/chenqx/.conda/envs/lmp-fast/lib/libmpi.so.12.6.2",
+                "sha256": "bb9dd34c7ba72c43df3e4b8a100612275dc103217816473fe087ff7e0a887ab5"
+              },
+              "libfabric.so.1": {
+                "path": "/home/chenqx/.conda/envs/lmp-fast/lib/libfabric.so.1.32.0",
+                "sha256": "786ced2efa6598ee7f25209e23ddbee0032d93f3adb1c3caad4cc75538019e0c"
+              }
+            }
+          }
+        },
+        {
+          "id": "parallel3d__lj_cut__p24__s24682357__atom",
+          "log_sha256": "6150ae6fc300427a0c748e5877114c43de2358acb5d625413fb5829bbc0c99e7",
+          "binary_provenance": {
+            "executable_sha256": "5306c77555863c4e5db4e952af84d81780f2f5f140a71ad8edc057fe5c74197d",
+            "libraries": {
+              "liblammps_mpi.so.0": {
+                "path": "/home/chenqx/LAMMPS-opt/build-fast/liblammps_mpi.so.0",
+                "sha256": "7f55a477112226c840c035b252ce109b365b343072f6dc9a81e2f7d12d311373"
+              },
+              "libmpi.so.12": {
+                "path": "/home/chenqx/.conda/envs/lmp-fast/lib/libmpi.so.12.6.2",
+                "sha256": "bb9dd34c7ba72c43df3e4b8a100612275dc103217816473fe087ff7e0a887ab5"
+              },
+              "libfabric.so.1": {
+                "path": "/home/chenqx/.conda/envs/lmp-fast/lib/libfabric.so.1.32.0",
+                "sha256": "786ced2efa6598ee7f25209e23ddbee0032d93f3adb1c3caad4cc75538019e0c"
+              }
+            }
+          }
+        },
+        {
+          "id": "parallel3d__lj_cut__p24__s24683357__atom",
+          "log_sha256": "7045b8ec36288439d5bfab0e760ae68abd052d58f13bc8a5e78a46586fbc1fa7",
+          "binary_provenance": {
+            "executable_sha256": "5306c77555863c4e5db4e952af84d81780f2f5f140a71ad8edc057fe5c74197d",
+            "libraries": {
+              "liblammps_mpi.so.0": {
+                "path": "/home/chenqx/LAMMPS-opt/build-fast/liblammps_mpi.so.0",
+                "sha256": "7f55a477112226c840c035b252ce109b365b343072f6dc9a81e2f7d12d311373"
+              },
+              "libmpi.so.12": {
+                "path": "/home/chenqx/.conda/envs/lmp-fast/lib/libmpi.so.12.6.2",
+                "sha256": "bb9dd34c7ba72c43df3e4b8a100612275dc103217816473fe087ff7e0a887ab5"
+              },
+              "libfabric.so.1": {
+                "path": "/home/chenqx/.conda/envs/lmp-fast/lib/libfabric.so.1.32.0",
+                "sha256": "786ced2efa6598ee7f25209e23ddbee0032d93f3adb1c3caad4cc75538019e0c"
+              }
+            }
+          }
+        }
+      ],
+      "reference_statistics": [
+        {
+          "mean": -6.682187995211476,
+          "variance": 2.9701791715025305e-05,
+          "se": 0.00048620857981706656,
+          "ess": 161.9038759754768,
+          "df": 6
+        },
+        {
+          "mean": -6.681531509272362,
+          "variance": 2.998447373065862e-05,
+          "se": 0.0005334450364149928,
+          "ess": 105.37002275117463,
+          "df": 104
+        },
+        {
+          "mean": -6.6818336587168945,
+          "variance": 2.9873806035442923e-05,
+          "se": 0.00047925073016189603,
+          "ess": 182.0893982955856,
+          "df": 6
+        }
+      ],
+      "mean_difference": -0.0003067625086421444,
+      "difference_ci95_halfwidth": 0.0008184967172615891,
+      "variance_ratio": 0.6955453070739789,
+      "variance_ratio_ci95_block8": [
+        0.6242374042844692,
+        0.7718412374774409
+      ],
+      "variance_ratio_ci95_block32": [
+        0.6311513118189767,
+        0.7764807916858977
+      ]
+    },
+    {
+      "model": "lj",
+      "observable": "c_ctype[2]",
+      "discard": 0.5,
+      "per_seed": [
+        {
+          "mean": 0.30026430993909187,
+          "variance": 1.7364613901605103e-05,
+          "se": 0.00043206362381851914,
+          "ess": 228.32626710178334,
+          "df": 3
+        },
+        {
+          "mean": 0.30072501384274636,
+          "variance": 1.7608012662568156e-05,
+          "se": 0.00041661974399327754,
+          "ess": 301.0,
+          "df": 3
+        },
+        {
+          "mean": 0.30013723785299,
+          "variance": 1.767780502974599e-05,
+          "se": 0.00029193046060385083,
+          "ess": 232.5503079028898,
+          "df": 36
+        }
+      ],
+      "reference_source": [
+        {
+          "id": "parallel3d__lj_cut__p24__s24681357__atom",
+          "log_sha256": "2c1b159d2ea17e90ff3ee9d194b179d5a1c1fa9092d5f47aeaa983ac35cdd31c",
+          "binary_provenance": {
+            "executable_sha256": "5306c77555863c4e5db4e952af84d81780f2f5f140a71ad8edc057fe5c74197d",
+            "libraries": {
+              "liblammps_mpi.so.0": {
+                "path": "/home/chenqx/LAMMPS-opt/build-fast/liblammps_mpi.so.0",
+                "sha256": "7f55a477112226c840c035b252ce109b365b343072f6dc9a81e2f7d12d311373"
+              },
+              "libmpi.so.12": {
+                "path": "/home/chenqx/.conda/envs/lmp-fast/lib/libmpi.so.12.6.2",
+                "sha256": "bb9dd34c7ba72c43df3e4b8a100612275dc103217816473fe087ff7e0a887ab5"
+              },
+              "libfabric.so.1": {
+                "path": "/home/chenqx/.conda/envs/lmp-fast/lib/libfabric.so.1.32.0",
+                "sha256": "786ced2efa6598ee7f25209e23ddbee0032d93f3adb1c3caad4cc75538019e0c"
+              }
+            }
+          }
+        },
+        {
+          "id": "parallel3d__lj_cut__p24__s24682357__atom",
+          "log_sha256": "6150ae6fc300427a0c748e5877114c43de2358acb5d625413fb5829bbc0c99e7",
+          "binary_provenance": {
+            "executable_sha256": "5306c77555863c4e5db4e952af84d81780f2f5f140a71ad8edc057fe5c74197d",
+            "libraries": {
+              "liblammps_mpi.so.0": {
+                "path": "/home/chenqx/LAMMPS-opt/build-fast/liblammps_mpi.so.0",
+                "sha256": "7f55a477112226c840c035b252ce109b365b343072f6dc9a81e2f7d12d311373"
+              },
+              "libmpi.so.12": {
+                "path": "/home/chenqx/.conda/envs/lmp-fast/lib/libmpi.so.12.6.2",
+                "sha256": "bb9dd34c7ba72c43df3e4b8a100612275dc103217816473fe087ff7e0a887ab5"
+              },
+              "libfabric.so.1": {
+                "path": "/home/chenqx/.conda/envs/lmp-fast/lib/libfabric.so.1.32.0",
+                "sha256": "786ced2efa6598ee7f25209e23ddbee0032d93f3adb1c3caad4cc75538019e0c"
+              }
+            }
+          }
+        },
+        {
+          "id": "parallel3d__lj_cut__p24__s24683357__atom",
+          "log_sha256": "7045b8ec36288439d5bfab0e760ae68abd052d58f13bc8a5e78a46586fbc1fa7",
+          "binary_provenance": {
+            "executable_sha256": "5306c77555863c4e5db4e952af84d81780f2f5f140a71ad8edc057fe5c74197d",
+            "libraries": {
+              "liblammps_mpi.so.0": {
+                "path": "/home/chenqx/LAMMPS-opt/build-fast/liblammps_mpi.so.0",
+                "sha256": "7f55a477112226c840c035b252ce109b365b343072f6dc9a81e2f7d12d311373"
+              },
+              "libmpi.so.12": {
+                "path": "/home/chenqx/.conda/envs/lmp-fast/lib/libmpi.so.12.6.2",
+                "sha256": "bb9dd34c7ba72c43df3e4b8a100612275dc103217816473fe087ff7e0a887ab5"
+              },
+              "libfabric.so.1": {
+                "path": "/home/chenqx/.conda/envs/lmp-fast/lib/libfabric.so.1.32.0",
+                "sha256": "786ced2efa6598ee7f25209e23ddbee0032d93f3adb1c3caad4cc75538019e0c"
+              }
+            }
+          }
+        }
+      ],
+      "reference_statistics": [
+        {
+          "mean": 0.3003562344269103,
+          "variance": 2.387890299997368e-05,
+          "se": 0.0005531072306931774,
+          "ess": 107.63284182211885,
+          "df": 3
+        },
+        {
+          "mean": 0.3004968248200443,
+          "variance": 2.3862239222281876e-05,
+          "se": 0.0005015810142040123,
+          "ess": 94.84818325699233,
+          "df": 93
+        },
+        {
+          "mean": 0.30038975982835,
+          "variance": 2.5671901658289212e-05,
+          "se": 0.0006559771808994998,
+          "ess": 116.58396556140656,
+          "df": 3
+        }
+      ],
+      "mean_difference": -3.875248015877686e-05,
+      "difference_ci95_halfwidth": 0.0012700098888894372,
+      "variance_ratio": 0.7171808824544893,
+      "variance_ratio_ci95_block8": [
+        0.6341458090630169,
+        0.8204535214537051
+      ],
+      "variance_ratio_ci95_block32": [
+        0.6411628146801006,
+        0.819165104828368
+      ]
+    },
+    {
+      "model": "lj",
+      "observable": "v_epa",
+      "discard": 0.5,
+      "per_seed": [
+        {
+          "mean": -6.682197236237718,
+          "variance": 2.1679498472693376e-05,
+          "se": 0.0005365795687257816,
+          "ess": 227.62202446950462,
+          "df": 3
+        },
+        {
+          "mean": -6.681740975967333,
+          "variance": 2.2485395080629953e-05,
+          "se": 0.0005588942357321311,
+          "ess": 301.0,
+          "df": 3
+        },
+        {
+          "mean": -6.682279679832155,
+          "variance": 1.9830739356544468e-05,
+          "se": 0.00030088302903059726,
+          "ess": 236.82953567561154,
+          "df": 36
+        }
+      ],
+      "reference_source": [
+        {
+          "id": "parallel3d__lj_cut__p24__s24681357__atom",
+          "log_sha256": "2c1b159d2ea17e90ff3ee9d194b179d5a1c1fa9092d5f47aeaa983ac35cdd31c",
+          "binary_provenance": {
+            "executable_sha256": "5306c77555863c4e5db4e952af84d81780f2f5f140a71ad8edc057fe5c74197d",
+            "libraries": {
+              "liblammps_mpi.so.0": {
+                "path": "/home/chenqx/LAMMPS-opt/build-fast/liblammps_mpi.so.0",
+                "sha256": "7f55a477112226c840c035b252ce109b365b343072f6dc9a81e2f7d12d311373"
+              },
+              "libmpi.so.12": {
+                "path": "/home/chenqx/.conda/envs/lmp-fast/lib/libmpi.so.12.6.2",
+                "sha256": "bb9dd34c7ba72c43df3e4b8a100612275dc103217816473fe087ff7e0a887ab5"
+              },
+              "libfabric.so.1": {
+                "path": "/home/chenqx/.conda/envs/lmp-fast/lib/libfabric.so.1.32.0",
+                "sha256": "786ced2efa6598ee7f25209e23ddbee0032d93f3adb1c3caad4cc75538019e0c"
+              }
+            }
+          }
+        },
+        {
+          "id": "parallel3d__lj_cut__p24__s24682357__atom",
+          "log_sha256": "6150ae6fc300427a0c748e5877114c43de2358acb5d625413fb5829bbc0c99e7",
+          "binary_provenance": {
+            "executable_sha256": "5306c77555863c4e5db4e952af84d81780f2f5f140a71ad8edc057fe5c74197d",
+            "libraries": {
+              "liblammps_mpi.so.0": {
+                "path": "/home/chenqx/LAMMPS-opt/build-fast/liblammps_mpi.so.0",
+                "sha256": "7f55a477112226c840c035b252ce109b365b343072f6dc9a81e2f7d12d311373"
+              },
+              "libmpi.so.12": {
+                "path": "/home/chenqx/.conda/envs/lmp-fast/lib/libmpi.so.12.6.2",
+                "sha256": "bb9dd34c7ba72c43df3e4b8a100612275dc103217816473fe087ff7e0a887ab5"
+              },
+              "libfabric.so.1": {
+                "path": "/home/chenqx/.conda/envs/lmp-fast/lib/libfabric.so.1.32.0",
+                "sha256": "786ced2efa6598ee7f25209e23ddbee0032d93f3adb1c3caad4cc75538019e0c"
+              }
+            }
+          }
+        },
+        {
+          "id": "parallel3d__lj_cut__p24__s24683357__atom",
+          "log_sha256": "7045b8ec36288439d5bfab0e760ae68abd052d58f13bc8a5e78a46586fbc1fa7",
+          "binary_provenance": {
+            "executable_sha256": "5306c77555863c4e5db4e952af84d81780f2f5f140a71ad8edc057fe5c74197d",
+            "libraries": {
+              "liblammps_mpi.so.0": {
+                "path": "/home/chenqx/LAMMPS-opt/build-fast/liblammps_mpi.so.0",
+                "sha256": "7f55a477112226c840c035b252ce109b365b343072f6dc9a81e2f7d12d311373"
+              },
+              "libmpi.so.12": {
+                "path": "/home/chenqx/.conda/envs/lmp-fast/lib/libmpi.so.12.6.2",
+                "sha256": "bb9dd34c7ba72c43df3e4b8a100612275dc103217816473fe087ff7e0a887ab5"
+              },
+              "libfabric.so.1": {
+                "path": "/home/chenqx/.conda/envs/lmp-fast/lib/libfabric.so.1.32.0",
+                "sha256": "786ced2efa6598ee7f25209e23ddbee0032d93f3adb1c3caad4cc75538019e0c"
+              }
+            }
+          }
+        }
+      ],
+      "reference_statistics": [
+        {
+          "mean": -6.682212112370396,
+          "variance": 2.8819782747096408e-05,
+          "se": 0.0006371451677359808,
+          "ess": 96.26764559392261,
+          "df": 3
+        },
+        {
+          "mean": -6.681939311775481,
+          "variance": 3.006899267964615e-05,
+          "se": 0.0005925553376061585,
+          "ess": 87.28357930012608,
+          "df": 3
+        },
+        {
+          "mean": -6.682142236785122,
+          "variance": 3.029198032626241e-05,
+          "se": 0.000710681082749249,
+          "ess": 108.28246741843995,
+          "df": 3
+        }
+      ],
+      "mean_difference": 2.525629793126427e-05,
+      "difference_ci95_halfwidth": 0.0014824698881088201,
+      "variance_ratio": 0.7175946466198393,
+      "variance_ratio_ci95_block8": [
+        0.6305223996517887,
+        0.820868326805736
+      ],
+      "variance_ratio_ci95_block32": [
+        0.6426391600168385,
+        0.8211435637745689
+      ]
+    },
+    {
+      "model": "ideal",
+      "observable": "c_ctype[2]",
+      "discard": 0.25,
+      "per_seed": [
+        {
+          "mean": 0.6672772888950481,
+          "variance": 3.332468823166671e-05,
+          "se": 0.00032026042235840053,
+          "ess": 324.907361192425,
+          "df": 323
+        },
+        {
+          "mean": 0.6668175177845528,
+          "variance": 3.8747350985082795e-05,
+          "se": 0.0004613840344324557,
+          "ess": 332.5186849211019,
+          "df": 6
+        },
+        {
+          "mean": 0.6670336896018108,
+          "variance": 3.4663687592667994e-05,
+          "se": 0.0004453035392777288,
+          "ess": 294.44299137739273,
+          "df": 6
+        }
+      ],
+      "target_mean": 0.6666666666666666,
+      "target_variance": 3.616898148148148e-05,
+      "mean": 0.6670428320938039,
+      "mean_ci95_halfwidth": 0.0005846118039557142,
+      "variance_ratio_ci95_block8": [
+        0.9022888577562982,
+        1.0632150270208764
+      ],
+      "variance_ratio_ci95_block32": [
+        0.9074282778720903,
+        1.0509416772767701
+      ]
+    },
+    {
+      "model": "ideal",
+      "observable": "v_epa",
+      "discard": 0.25,
+      "per_seed": [
+        {
+          "mean": 0.0,
+          "variance": 0.0,
+          "se": 0.0,
+          "ess": 0.0,
+          "df": 1
+        },
+        {
+          "mean": 0.0,
+          "variance": 0.0,
+          "se": 0.0,
+          "ess": 0.0,
+          "df": 1
+        },
+        {
+          "mean": 0.0,
+          "variance": 0.0,
+          "se": 0.0,
+          "ess": 0.0,
+          "df": 1
+        }
+      ],
+      "target_mean": 0.0,
+      "target_variance": 0.0,
+      "mean": 0.0,
+      "mean_ci95_halfwidth": 0.0
+    },
+    {
+      "model": "ideal",
+      "observable": "c_ctype[2]",
+      "discard": 0.5,
+      "per_seed": [
+        {
+          "mean": 0.6672328133651716,
+          "variance": 3.371425113276655e-05,
+          "se": 0.0003935439587888073,
+          "ess": 228.9933763023945,
+          "df": 17
+        },
+        {
+          "mean": 0.66720685821567,
+          "variance": 4.032376802054165e-05,
+          "se": 0.00045816306951623157,
+          "ess": 243.1672335557709,
+          "df": 3
+        },
+        {
+          "mean": 0.6673944923172758,
+          "variance": 3.737652831314031e-05,
+          "se": 0.0005240527546223477,
+          "ess": 214.9267926947239,
+          "df": 3
+        }
+      ],
+      "target_mean": 0.6666666666666666,
+      "target_variance": 3.616898148148148e-05,
+      "mean": 0.6672780546327058,
+      "mean_ci95_halfwidth": 0.0008482687337599757,
+      "variance_ratio_ci95_block8": [
+        0.9214014550564967,
+        1.132619819379197
+      ],
+      "variance_ratio_ci95_block32": [
+        0.9315104891247927,
+        1.1129764924751702
+      ]
+    },
+    {
+      "model": "ideal",
+      "observable": "v_epa",
+      "discard": 0.5,
+      "per_seed": [
+        {
+          "mean": 0.0,
+          "variance": 0.0,
+          "se": 0.0,
+          "ess": 0.0,
+          "df": 1
+        },
+        {
+          "mean": 0.0,
+          "variance": 0.0,
+          "se": 0.0,
+          "ess": 0.0,
+          "df": 1
+        },
+        {
+          "mean": 0.0,
+          "variance": 0.0,
+          "se": 0.0,
+          "ess": 0.0,
+          "df": 1
+        }
+      ],
+      "target_mean": 0.0,
+      "target_variance": 0.0,
+      "mean": 0.0,
+      "mean_ci95_halfwidth": 0.0
+    }
+  ],
+  "not_a_general_correctness_proof": true,
+  "serial_exact": {
+    "counts_and_counters_equal": true,
+    "label_dumps_equal": true,
+    "maximum_total_energy_residual": 1.1823431123048067e-11
+  },
+  "decision": "REVIEW",
+  "interpretation": "Unadjusted exploratory confidence checks are not an equivalence proof; review flags before production. No failure detected does not certify every potential or state."
+}

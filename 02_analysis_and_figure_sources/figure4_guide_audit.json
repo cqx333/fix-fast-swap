@@ -1,0 +1,42 @@
+[
+  {
+    "ranks": 1,
+    "energy_path": "atom",
+    "power": 2,
+    "coefficient": 8.881013942017765e-07,
+    "normalization_offset": 1.65,
+    "minimum_N": 500,
+    "maximum_N": 6912,
+    "is_fit": false
+  },
+  {
+    "ranks": 1,
+    "energy_path": "fast",
+    "power": 1,
+    "coefficient": 2.432945817292095e-06,
+    "normalization_offset": 0.62,
+    "minimum_N": 500,
+    "maximum_N": 6912,
+    "is_fit": false
+  },
+  {
+    "ranks": 24,
+    "energy_path": "atom",
+    "power": 2,
+    "coefficient": 6.960354521641147e-08,
+    "normalization_offset": 1.65,
+    "minimum_N": 6144,
+    "maximum_N": 32928,
+    "is_fit": false
+  },
+  {
+    "ranks": 24,
+    "energy_path": "fast",
+    "power": 1,
+    "coefficient": 7.100038339517691e-07,
+    "normalization_offset": 0.62,
+    "minimum_N": 6144,
+    "maximum_N": 32928,
+    "is_fit": false
+  }
+]

@@ -1,0 +1,36 @@
+clear
+units lj
+dimension 3
+boundary p p p
+atom_style atomic
+processors 2 3 4
+comm_style brick
+newton on
+lattice fcc 0.8442 origin 0.25 0.25 0.25
+region box block 0 8 0 12 0 16 units lattice
+create_box 2 box
+create_atoms 1 box
+region upper block INF INF INF INF 8 16 units lattice
+set region upper type 2
+mass * 1.0
+pair_style lj/cut 2.4
+pair_coeff 1 1 1.00 1.00 2.4
+pair_coeff 1 2 1.10 0.98 2.4
+pair_coeff 2 2 0.85 0.95 2.4
+pair_modify shift no tail no
+neighbor 0.3 bin
+neigh_modify delay 0 every 1 check yes
+timestep 0
+fix integrate all nve
+compute ctype all count/type atom
+fix mc all fast/swap 1 6144 1.0 24683357 types 2 1 2 mu 0 0.20000000000000001
+variable epa equal pe/atoms
+thermo_style custom step atoms pe v_epa c_ctype[1] c_ctype[2] f_mc[1] f_mc[2]
+thermo_modify norm no format float %.17g
+thermo 1
+dump labels all custom 25 lj_fast_24683357.types.dump id type
+dump_modify labels sort id
+print "REVISION_PRODUCTION_BEGIN"
+run 600
+print "REVISION_PRODUCTION_END"
+write_dump all custom lj_fast_24683357.final.dump id type x y z modify sort id format float %.17g

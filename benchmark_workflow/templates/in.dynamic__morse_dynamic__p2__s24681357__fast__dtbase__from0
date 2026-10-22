@@ -1,0 +1,26 @@
+clear
+units lj
+atom_style atomic
+processors 1 1 2
+read_restart "incremental/raw/prepare__morse_dynamic__s24681357.restart"
+neighbor 0.3 bin
+neigh_modify delay 0 every 1 check yes
+timestep 0.001
+reset_timestep 99
+fix integrate all nvt temp 1 1 0.2
+fix mc all fast/swap 100 512 1 881570974 types 2 1 2 mu 0 0.20000000000000001
+compute ctype all count/type atom
+variable epa equal pe/atoms
+compute pdist all pair/local dist
+compute rmin all reduce min c_pdist inputs local
+thermo_style custom step atoms pe v_epa c_ctype[1] c_ctype[2] f_mc[1] f_mc[2] temp press vol c_rmin
+thermo_modify norm no format float %.17g
+thermo 100
+print "REVISION_PRODUCTION_BEGIN"
+run 10000
+print "REVISION_PRODUCTION_END"
+write_dump all custom incremental/raw/dynamic__morse_dynamic__p2__s24681357__fast__dtbase__from0.final.dump id type x y z modify sort id format float %.17g
+unfix mc
+thermo_style custom step atoms pe temp press
+thermo_modify norm no format float %.17g
+write_restart incremental/raw/dynamic__morse_dynamic__p2__s24681357__fast__dtbase__from0.restart

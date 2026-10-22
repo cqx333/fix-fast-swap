@@ -1,0 +1,70 @@
+LAMMPS (17 Apr 2024 - Development)
+  using 1 OpenMP thread(s) per MPI task
+clear
+  using 1 OpenMP thread(s) per MPI task
+units lj
+dimension 3
+boundary p p p
+atom_style charge
+processors 1 1 1
+lattice fcc 0.8442
+Lattice spacing in x,y,z = 1.6795962 1.6795962 1.6795962
+region box block 0 6 0 6 0 6 units lattice
+create_box 2 box
+Created orthogonal box = (0 0 0) to (10.077577 10.077577 10.077577)
+  1 by 1 by 1 MPI processor grid
+create_atoms 1 box
+Created 864 atoms
+  using lattice units in orthogonal box = (0 0 0) to (10.077577 10.077577 10.077577)
+  create_atoms CPU = 0.000 seconds
+region upper block INF INF INF INF 3 6 units lattice
+set region upper type 2
+Setting atom values ...
+  432 settings made for type
+mass 1 1
+mass 2 1
+set type 1 charge 0.29999999999999999
+Setting atom values ...
+  432 settings made for charge
+set type 2 charge 0.29999999999999999
+Setting atom values ...
+  432 settings made for charge
+pair_style buck/coul/cut 2.4
+pair_coeff 1 1 1.00 1.00 0.10 2.4
+pair_coeff 1 2 1.10 1.00 0.10 2.4
+pair_coeff 2 2 0.85 1.00 0.10 2.4
+neighbor 0.3 bin
+neigh_modify delay 0 every 1 check yes
+pair_style lj/cut/coul/long 2.4
+pair_coeff * * 1.0 1.0
+kspace_style pppm 1e-4
+timestep 0.0
+fix integrate all nve
+variable ncycle equal 864
+variable seed equal 24681357
+variable tmc equal 1
+compute ctype all count/type atom
+fix mc all fast/swap 1 ${ncycle} ${tmc} ${seed} types 2 1 2 mu 0 0.2
+fix mc all fast/swap 1 864 ${tmc} ${seed} types 2 1 2 mu 0 0.2
+fix mc all fast/swap 1 864 1 ${seed} types 2 1 2 mu 0 0.2
+fix mc all fast/swap 1 864 1 24681357 types 2 1 2 mu 0 0.2
+variable epa equal pe/atoms
+thermo_style custom step atoms pe v_epa c_ctype[1] c_ctype[2] f_mc[1] f_mc[2] temp press vol
+thermo_modify norm no format float %.17g
+thermo 1
+print "REVISION_PRODUCTION_BEGIN"
+REVISION_PRODUCTION_BEGIN
+run 1
+PPPM initialization ...
+WARNING: System is not charge neutral, net charge = 259.2 (src/kspace.cpp:327)
+  using 12-bit tables for long-range coulomb (src/kspace.cpp:342)
+  G vector (1/distance) = 1.1302672
+  grid = 24 24 24
+  stencil order = 5
+  estimated absolute RMS force accuracy = 9.2664542e-05
+  estimated relative force accuracy = 9.2664542e-05
+  using double precision KISS FFT
+  3d grid and FFT values/proc = 24389 13824
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+ERROR: Fix fast/swap does not yet support KSpace long-range energy terms (src/MC/fix_fast_swap.cpp:226)
+Last command: run 1

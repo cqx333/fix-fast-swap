@@ -1,0 +1,1049 @@
+clear
+units lj
+dimension 3
+boundary p p p
+atom_style atomic
+processors 1 1 1
+lattice fcc 0.8442
+region box block 0 4 0 4 0 4 units lattice
+create_box 2 box
+create_atoms 1 box
+region upper block INF INF INF INF 2 4 units lattice
+set region upper type 2
+mass 1 1
+mass 2 1
+pair_style table linear 400
+pair_coeff 1 1 tables/pair_lj.table LJAA
+pair_coeff 1 2 tables/pair_lj.table LJAB
+pair_coeff 2 2 tables/pair_lj.table LJBB
+neighbor 0.3 bin
+neigh_modify delay 0 every 1 check yes
+timestep 0.0
+fix integrate all nve
+thermo_style custom step atoms pe
+thermo_modify norm no format float %.17g
+thermo 1
+run 0
+write_dump all custom results/raw/closure__table_lj__p1__s24681357__diagnostic.initial.dump id type modify sort id
+compute ids all property/local patom1 patom2
+compute ep all pair/local eng
+set atom 248 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0000.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 0 248 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 248 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0000.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 0 248 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 248 type 1
+set atom 231 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0001.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 1 231 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 231 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0001.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 1 231 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 231 type 1
+set atom 18 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0002.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 2 18 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 18 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0002.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 2 18 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 18 type 1
+set atom 243 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0003.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 3 243 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 243 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0003.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 3 243 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 243 type 1
+set atom 243 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0004.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 4 243 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 243 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0004.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 4 243 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 243 type 1
+set atom 62 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0005.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 5 62 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 62 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0005.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 5 62 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 62 type 1
+set atom 61 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0006.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 6 61 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 61 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0006.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 6 61 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 61 type 1
+set atom 176 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0007.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 7 176 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 176 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0007.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 7 176 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 176 type 1
+set atom 185 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0008.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 8 185 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 185 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0008.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 8 185 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 185 type 1
+set atom 201 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0009.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 9 201 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 201 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0009.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 9 201 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 201 type 1
+set atom 137 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0010.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 10 137 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 137 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0010.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 10 137 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 137 type 1
+set atom 189 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0011.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 11 189 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 189 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0011.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 11 189 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 189 type 1
+set atom 105 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0012.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 12 105 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 105 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0012.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 12 105 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 105 type 1
+set atom 75 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0013.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 13 75 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 75 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0013.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 13 75 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 75 type 1
+set atom 216 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0014.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 14 216 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 216 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0014.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 14 216 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 216 type 1
+set atom 11 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0015.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 15 11 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 11 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0015.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 15 11 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 11 type 1
+set atom 92 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0016.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 16 92 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 92 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0016.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 16 92 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 92 type 1
+set atom 236 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0017.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 17 236 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 236 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0017.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 17 236 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 236 type 1
+set atom 25 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0018.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 18 25 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 25 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0018.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 18 25 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 25 type 1
+set atom 122 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0019.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 19 122 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 122 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0019.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 19 122 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 122 type 1
+set atom 162 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0020.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 20 162 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 162 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0020.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 20 162 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 162 type 1
+set atom 136 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0021.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 21 136 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 136 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0021.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 21 136 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 136 type 1
+set atom 112 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0022.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 22 112 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 112 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0022.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 22 112 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 112 type 1
+set atom 47 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0023.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 23 47 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 47 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0023.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 23 47 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 47 type 1
+set atom 199 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0024.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 24 199 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 199 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0024.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 24 199 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 199 type 1
+set atom 237 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0025.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 25 237 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 237 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0025.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 25 237 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 237 type 1
+set atom 26 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0026.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 26 26 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 26 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0026.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 26 26 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 26 type 1
+set atom 127 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0027.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 27 127 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 127 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0027.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 27 127 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 127 type 1
+set atom 48 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0028.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 28 48 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 48 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0028.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 28 48 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 48 type 1
+set atom 240 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0029.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 29 240 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 240 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0029.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 29 240 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 240 type 1
+set atom 91 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0030.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 30 91 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 91 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0030.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 30 91 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 91 type 1
+set atom 241 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0031.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 31 241 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 241 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0031.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 31 241 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 241 type 1
+set atom 186 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0032.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 32 186 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 186 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0032.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 32 186 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 186 type 1
+set atom 167 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0033.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 33 167 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 167 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0033.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 33 167 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 167 type 1
+set atom 93 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0034.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 34 93 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 93 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0034.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 34 93 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 93 type 1
+set atom 137 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0035.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 35 137 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 137 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0035.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 35 137 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 137 type 1
+set atom 231 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0036.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 36 231 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 231 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0036.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 36 231 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 231 type 1
+set atom 248 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0037.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 37 248 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 248 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0037.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 37 248 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 248 type 1
+set atom 144 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0038.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 38 144 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 144 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0038.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 38 144 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 144 type 1
+set atom 96 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0039.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 39 96 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 96 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0039.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 39 96 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 96 type 1
+set atom 47 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0040.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 40 47 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 47 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0040.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 40 47 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 47 type 1
+set atom 55 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0041.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 41 55 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 55 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0041.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 41 55 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 55 type 1
+set atom 117 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0042.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 42 117 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 117 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0042.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 42 117 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 117 type 1
+set atom 120 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0043.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 43 120 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 120 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0043.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 43 120 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 120 type 1
+set atom 38 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0044.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 44 38 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 38 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0044.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 44 38 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 38 type 1
+set atom 185 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0045.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 45 185 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 185 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0045.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 45 185 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 185 type 1
+set atom 171 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0046.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 46 171 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 171 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0046.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 46 171 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 171 type 1
+set atom 191 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0047.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 47 191 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 191 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0047.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 47 191 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 191 type 1
+set atom 111 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0048.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 48 111 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 111 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0048.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 48 111 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 111 type 1
+set atom 123 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0049.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 49 123 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 123 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0049.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 49 123 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 123 type 1
+set atom 167 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0050.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 50 167 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 167 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0050.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 50 167 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 167 type 1
+set atom 192 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0051.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 51 192 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 192 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0051.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 51 192 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 192 type 1
+set atom 226 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0052.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 52 226 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 226 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0052.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 52 226 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 226 type 1
+set atom 207 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0053.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 53 207 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 207 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0053.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 53 207 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 207 type 1
+set atom 223 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0054.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 54 223 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 223 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0054.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 54 223 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 223 type 1
+set atom 180 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0055.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 55 180 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 180 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0055.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 55 180 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 180 type 1
+set atom 42 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0056.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 56 42 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 42 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0056.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 56 42 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 42 type 1
+set atom 228 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0057.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 57 228 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 228 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0057.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 57 228 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 228 type 1
+set atom 80 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0058.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 58 80 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 80 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0058.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 58 80 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 80 type 1
+set atom 70 type 1
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0059.before.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 59 70 1 2 before $(v_eg:%.17g)"
+variable eg delete
+set atom 70 type 2
+dump pair_dump all local 1 results/raw/closure__table_lj__p1__s24681357__diagnostic.0059.after.pairs index c_ids[1] c_ids[2] c_ep
+dump_modify pair_dump format float %.17g
+run 0
+undump pair_dump
+variable eg equal pe
+print "CLOSURE 59 70 1 2 after $(v_eg:%.17g)"
+variable eg delete
+set atom 70 type 1

@@ -1,12 +1,11 @@
 SPDX-License-Identifier: GPL-2.0-or-later
 
-This repository contains a LAMMPS fix implementation intended to be distributed
-under the GNU General Public License version 2 or later, consistent with the
-LAMMPS source tree and LAMMPS-derived source files.
+This LAMMPS extension is free software: you may redistribute it and/or modify
+it under the terms of the GNU General Public License as published by the
+Free Software Foundation, either version 2 of the License, or (at your option)
+any later version.
 
-Copyright (c) 2026 Qingxi Chen and coauthors.
-
-This code is provided without warranty of any kind. Users are responsible for
-verifying correctness for their LAMMPS version, build configuration, and
-simulation model.
-
+It is distributed WITHOUT ANY WARRANTY; without even the implied warranty
+of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See COPYING for
+the complete GNU General Public License version 2 and the notices in the
+source files for copyright information.

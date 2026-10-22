@@ -1,0 +1,38 @@
+{
+  "simulated_temperatures": [
+    0.59,
+    0.6,
+    0.61,
+    0.62,
+    0.63,
+    0.64
+  ],
+  "prescribed_reference": [
+    0.0,
+    0.65
+  ],
+  "guide_segments": {
+    "c_s": [
+      [
+        0.0008078598230913635,
+        0.64
+      ],
+      [
+        0.0,
+        0.65
+      ]
+    ],
+    "c_l": [
+      [
+        0.0268109537496353,
+        0.64
+      ],
+      [
+        0.0,
+        0.65
+      ]
+    ]
+  },
+  "additional_binary_observations": 0,
+  "computed_coexistence_points_and_intervals_unchanged": true
+}

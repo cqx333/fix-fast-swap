@@ -1,0 +1,9 @@
+Managed directories to replace after backing up a clean existing checkout:
+src/MC
+examples
+docs
+benchmark_workflow
+02_analysis_and_figure_sources
+01_manuscript_tex_and_source
+
+Copy the candidate root files over their matching paths. Preserve .git, repository history and author-owned unrelated files. Review git diff before committing. Do not overlay old benchmark_workflow files into the new workflow.

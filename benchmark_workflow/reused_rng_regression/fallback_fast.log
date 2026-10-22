@@ -1,0 +1,122 @@
+LAMMPS (17 Apr 2024 - Development)
+  using 1 OpenMP thread(s) per MPI task
+clear
+  using 1 OpenMP thread(s) per MPI task
+units lj
+dimension 3
+boundary p p p
+atom_style atomic
+processors 1 1 2
+comm_style brick
+newton on
+lattice fcc 0.8442 origin 0.25 0.25 0.25
+Lattice spacing in x,y,z = 1.6795962 1.6795962 1.6795962
+region box block 0 6 0 6 0 6 units lattice
+create_box 2 box
+Created orthogonal box = (0 0 0) to (10.077577 10.077577 10.077577)
+  1 by 1 by 2 MPI processor grid
+create_atoms 1 box
+Created 864 atoms
+  using lattice units in orthogonal box = (0 0 0) to (10.077577 10.077577 10.077577)
+  create_atoms CPU = 0.000 seconds
+region upper block INF INF INF INF 3 6 units lattice
+set region upper type 2
+Setting atom values ...
+  432 settings made for type
+mass * 1.0
+pair_style lj/cut 2.4
+pair_coeff 1 1 1.00 1.00 2.4
+pair_coeff 1 2 1.10 0.98 2.4
+pair_coeff 2 2 0.85 0.95 2.4
+pair_modify shift no tail no
+neighbor 0.3 bin
+neigh_modify delay 0 every 1 check yes
+timestep 0
+fix integrate all nve
+compute ctype all count/type atom
+fix mc all fast/swap 1 864 1.0 24681357 types 2 1 2 mu 0 0.20000000000000001
+Fix fast/swap RNG revision 20261020: rank-local seeds; serial stream unchanged
+variable epa equal pe/atoms
+thermo_style custom step atoms pe v_epa c_ctype[1] c_ctype[2] f_mc[1] f_mc[2]
+thermo_modify norm no format float %.17g
+thermo 1
+dump labels all custom 25 fallback_fast.types.dump id type
+dump_modify labels sort id
+print "REVISION_PRODUCTION_BEGIN"
+REVISION_PRODUCTION_BEGIN
+run 20
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Fix fast/swap: requested FULL neighbor list
+Fix fast/swap: neighbor list attached (assumed FULL)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 2.7
+  ghost atom cutoff = 2.7
+  binsize = 1.35, bins = 8 8 8
+  2 neighbor lists, perpetual/occasional/extra = 2 0 0
+  (1) pair lj/cut, perpetual, half/full from (2)
+      attributes: half, newton on
+      pair build: halffull/newton
+      stencil: none
+      bin: none
+  (2) fix fast/swap, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.776 | 3.776 | 3.776 Mbytes
+   Step        Atoms        PotEng         v_epa        c_ctype[1]     c_ctype[2]      f_mc[1]        f_mc[2]    
+         0         864  -5100.2453506364054 -5.9030617484217656 432 432 0 0
+WARNING: FastSwap: parallel MC disabled permanently. Safe interior too small for current MPI decomposition. (src/MC/fix_fast_swap.cpp:501)
+         1         864  -5729.4420925101986 -6.6312987181830998 573 291 864 585
+         2         864  -5770.0658829455933 -6.6783169941499922 600 264 1728 1084
+         3         864  -5795.3731843062642 -6.7076078522063245 622 242 2592 1614
+         4         864  -5796.6025113399965 -6.7090306844212924 630 234 3456 2138
+         5         864  -5784.5862224055145 -6.6951229425989753 619 245 4320 2653
+         6         864  -5763.6871588113809 -6.6709342115872463 602 262 5184 3180
+         7         864  -5775.4251058665723 -6.6845197984566811 608 256 6048 3718
+         8         864  -5771.5765750320043 -6.6800654803611161 604 260 6912 4244
+         9         864  -5798.0362320900022 -6.7106900834375027 627 237 7776 4777
+        10         864  -5765.8842477743283 -6.6734771386276952 602 262 8640 5312
+        11         864  -5790.9736217508871 -6.7025157659153782 617 247 9504 5821
+        12         864  -5770.4435654964764 -6.6787541267320325 601 263 10368 6307
+        13         864  -5768.3780231259861 -6.6763634526921134 605 259 11232 6815
+        14         864  -5783.3181527251945 -6.6936552693578637 607 257 12096 7339
+        15         864  -5771.9390050713919 -6.68048495957337 604 260 12960 7844
+        16         864  -5775.2011268601818 -6.684260563495581 605 259 13824 8359
+        17         864  -5776.2050074370991 -6.6854224623114575 610 254 14688 8888
+        18         864  -5767.3078010581467 -6.675124769743225 597 267 15552 9423
+        19         864  -5759.5897454484439 -6.6661918350097729 592 272 16416 9958
+        20         864  -5770.9512359755481 -6.6793417083050324 607 257 17280 10485
+Loop time of 0.0921785 on 2 procs for 20 steps with 864 atoms
+
+94.4% CPU use with 2 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0.005062   | 0.0052165  | 0.0053709  |   0.2 |  5.66
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.00045549 | 0.00060856 | 0.00076162 |   0.0 |  0.66
+Output  | 0.00020426 | 0.00020651 | 0.00020876 |   0.0 |  0.22
+Modify  | 0.086074   | 0.086075   | 0.086076   |   0.0 | 93.38
+Other   |            | 7.208e-05  |            |       |  0.08
+
+Nlocal:            432 ave         432 max         432 min
+Histogram: 2 0 0 0 0 0 0 0 0 0
+Nghost:           1512 ave        1512 max        1512 min
+Histogram: 2 0 0 0 0 0 0 0 0 0
+Neighs:          16848 ave       16848 max       16848 min
+Histogram: 2 0 0 0 0 0 0 0 0 0
+FullNghs:        33696 ave       33696 max       33696 min
+Histogram: 2 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 67392
+Ave neighs/atom = 78
+Neighbor list builds = 0
+Dangerous builds = 0
+print "REVISION_PRODUCTION_END"
+REVISION_PRODUCTION_END
+write_dump all custom fallback_fast.final.dump id type x y z modify sort id format float %.17g
+Total wall time: 0:00:00

@@ -1,0 +1,21 @@
+Selected: {'mdmc': 18} total: 18
+Only fast/swap, 2--24 ranks; no atom/swap, rank-1, phase diagram, or repeated RNG regression.
+064 mdmc     p= 2 N=  512 dynamic__morse_dynamic__p2__s24681357__fast__dtbase__from0
+065 mdmc     p= 2 N=  512 dynamic__morse_dynamic__p2__s24681357__fast__dtbase__from100
+066 mdmc     p= 2 N=  512 dynamic__morse_dynamic__p2__s24681357__fast__dtbase__from200
+067 mdmc     p= 2 N=  512 dynamic__morse_dynamic__p2__s24681357__fast__dtbase__from300
+068 mdmc     p= 2 N=  512 dynamic__morse_dynamic__p2__s24681357__fast__dtbase__from400
+069 mdmc     p= 2 N=  512 dynamic__morse_dynamic__p2__s24681357__fast__dtbase__from500
+070 mdmc     p= 2 N=  512 dynamic__morse_dynamic__p2__s24682357__fast__dtbase__from0
+071 mdmc     p= 2 N=  512 dynamic__morse_dynamic__p2__s24682357__fast__dtbase__from100
+072 mdmc     p= 2 N=  512 dynamic__morse_dynamic__p2__s24682357__fast__dtbase__from200
+073 mdmc     p= 2 N=  512 dynamic__morse_dynamic__p2__s24682357__fast__dtbase__from300
+074 mdmc     p= 2 N=  512 dynamic__morse_dynamic__p2__s24682357__fast__dtbase__from400
+075 mdmc     p= 2 N=  512 dynamic__morse_dynamic__p2__s24682357__fast__dtbase__from500
+076 mdmc     p= 2 N=  512 dynamic__morse_dynamic__p2__s24683357__fast__dtbase__from0
+077 mdmc     p= 2 N=  512 dynamic__morse_dynamic__p2__s24683357__fast__dtbase__from100
+078 mdmc     p= 2 N=  512 dynamic__morse_dynamic__p2__s24683357__fast__dtbase__from200
+079 mdmc     p= 2 N=  512 dynamic__morse_dynamic__p2__s24683357__fast__dtbase__from300
+080 mdmc     p= 2 N=  512 dynamic__morse_dynamic__p2__s24683357__fast__dtbase__from400
+081 mdmc     p= 2 N=  512 dynamic__morse_dynamic__p2__s24683357__fast__dtbase__from500
+Input integrity and all selected templates verified. No MPI simulations launched.

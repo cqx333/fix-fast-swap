@@ -1,0 +1,52 @@
+{
+  "host": "node05",
+  "executable": "/home/chenqx/LAMMPS-opt/build-fast/lmp_mpi",
+  "executable_sha256": "5306c77555863c4e5db4e952af84d81780f2f5f140a71ad8edc057fe5c74197d",
+  "libraries": {
+    "liblammps_mpi.so.0": {
+      "path": "/home/chenqx/LAMMPS-opt/build-fast/liblammps_mpi.so.0",
+      "sha256": "5fa13058c965a2f0ffec776343acce4bc021a5f6988ad2937a82502b8cf2156d"
+    },
+    "libmpi.so.12": {
+      "path": "/home/chenqx/.conda/envs/lmp-fast/lib/libmpi.so.12.6.2",
+      "sha256": "bb9dd34c7ba72c43df3e4b8a100612275dc103217816473fe087ff7e0a887ab5"
+    },
+    "libfabric.so.1": {
+      "path": "/home/chenqx/.conda/envs/lmp-fast/lib/libfabric.so.1.32.0",
+      "sha256": "786ced2efa6598ee7f25209e23ddbee0032d93f3adb1c3caad4cc75538019e0c"
+    }
+  },
+  "launchers": {
+    "parallel": [
+      "mpirun"
+    ],
+    "mdmc": [
+      "mpirun"
+    ],
+    "timing": [
+      "mpirun"
+    ],
+    "size3d": [
+      "mpirun",
+      "-bind-to",
+      "core"
+    ]
+  },
+  "known_regression_library_matches": true,
+  "np_flag": "-np",
+  "ldd": "\tlinux-vdso.so.1 (0x00007fff1a3f6000)\n\tliblammps_mpi.so.0 => /home/chenqx/LAMMPS-opt/build-fast/liblammps_mpi.so.0 (0x000014bcdee20000)\n\tlibmpi.so.12 => /home/chenqx/.conda/envs/lmp-fast/lib/libmpi.so.12 (0x000014bcddde1000)\n\tlibstdc++.so.6 => /home/chenqx/.conda/envs/lmp-fast/lib/libstdc++.so.6 (0x000014bcddb2c000)\n\tlibgcc_s.so.1 => /home/chenqx/.conda/envs/lmp-fast/lib/libgcc_s.so.1 (0x000014bcddafe000)\n\tlibc.so.6 => /lib64/libc.so.6 (0x000014bcdd800000)\n\tlibpng16.so.16 => /home/chenqx/.conda/envs/lmp-fast/lib/libpng16.so.16 (0x000014bcddaac000)\n\tlibpython3.11.so.1.0 => /home/chenqx/.conda/envs/lmp-fast/lib/libpython3.11.so.1.0 (0x000014bcdd22c000)\n\tlibgomp.so.1 => /home/chenqx/.conda/envs/lmp-fast/lib/libgomp.so.1 (0x000014bcdda51000)\n\tlibm.so.6 => /lib64/libm.so.6 (0x000014bcdd151000)\n\tlibhwloc.so.15 => /home/chenqx/.conda/envs/lmp-fast/lib/libhwloc.so.15 (0x000014bcdd0ef000)\n\tlibfabric.so.1 => /home/chenqx/.conda/envs/lmp-fast/lib/libfabric.so.1 (0x000014bcdcf31000)\n\tlibucp.so.0 => /home/chenqx/.conda/envs/lmp-fast/lib/libucp.so.0 (0x000014bcdce2e000)\n\tlibucs.so.0 => /home/chenqx/.conda/envs/lmp-fast/lib/libucs.so.0 (0x000014bcdcdbe000)\n\tlibpthread.so.0 => /lib64/libpthread.so.0 (0x000014bcdda4a000)\n\tlibrt.so.1 => /lib64/librt.so.1 (0x000014bcdda45000)\n\t/lib64/ld-linux-x86-64.so.2 (0x000014bcdfea5000)\n\tlibdl.so.2 => /lib64/libdl.so.2 (0x000014bcdda40000)\n\tlibz.so.1 => /home/chenqx/.conda/envs/lmp-fast/lib/libz.so.1 (0x000014bcdda23000)\n\tlibutil.so.1 => /lib64/libutil.so.1 (0x000014bcdda1e000)\n\tlibxml2.so.16 => /home/chenqx/.conda/envs/lmp-fast/lib/./libxml2.so.16 (0x000014bcdcc78000)\n\tlibrdmacm.so.1 => /home/chenqx/.conda/envs/lmp-fast/lib/./librdmacm.so.1 (0x000014bcdcc56000)\n\tlibefa.so.1 => /home/chenqx/.conda/envs/lmp-fast/lib/./libefa.so.1 (0x000014bcdda0c000)\n\tlibibverbs.so.1 => /home/chenqx/.conda/envs/lmp-fast/lib/./libibverbs.so.1 (0x000014bcdcc31000)\n\tlibnl-3.so.200 => /home/chenqx/.conda/envs/lmp-fast/lib/./libnl-3.so.200 (0x000014bcdcc0c000)\n\tlibnl-route-3.so.200 => /home/chenqx/.conda/envs/lmp-fast/lib/./libnl-route-3.so.200 (0x000014bcdcb74000)\n\tlibatomic.so.1 => /home/chenqx/.conda/envs/lmp-fast/lib/./libatomic.so.1 (0x000014bcdcb68000)\n\tlibuct.so.0 => /home/chenqx/.conda/envs/lmp-fast/lib/./libuct.so.0 (0x000014bcdcb28000)\n\tlibucm.so.0 => /home/chenqx/.conda/envs/lmp-fast/lib/./libucm.so.0 (0x000014bcdcb0d000)\n\tlibiconv.so.2 => /home/chenqx/.conda/envs/lmp-fast/lib/././libiconv.so.2 (0x000014bcdc9fa000)\n\tlibicuuc.so.78 => /home/chenqx/.conda/envs/lmp-fast/lib/././libicuuc.so.78 (0x000014bcdc7c8000)\n\tlibicudata.so.78 => /home/chenqx/.conda/envs/lmp-fast/lib/././libicudata.so.78 (0x000014bcda833000)\n",
+  "python": "3.11.17 (main, Oct  7 2026, 00:02:24) [GCC 15.3.0]",
+  "source_sha256": {
+    "fix_fast_swap.cpp": "66c3edd4e9c06665dc9f5132b4a0a64a47b931914330291c20db57deb1d1331b",
+    "fix_fast_swap.h": "162b781f529f0ce80047e09f031816755cdc7393c6dcb42ffc3cd5475f1dade6"
+  },
+  "manifest_sha256": "0b0c6c286da6204752ccb513725051f695789d15bf3fde2b0dfacbe1c8b49e12",
+  "workflow_sha256": "0579886c8656a8a1efab8c52f58fd5a8181a74cf3d24c5a07534d611db9a614d",
+  "mpi_environment": {
+    "OMP_DYNAMIC": "FALSE",
+    "OMP_NUM_THREADS": "1"
+  },
+  "library_runtime_marker_required_per_task": true,
+  "note": "Historical atom/rank-1 results retain their original binary and host provenance.",
+  "identity": "afb9ade23d4f04d29145d5fbedf37f21c6d0de09cb5feadad8bc9b935fbc8df8"
+}
