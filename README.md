@@ -6,7 +6,7 @@ This is the source/data companion to **Fast Semi-Grand-Canonical Type-Swap Monte
 
 ## Snapshot
 
-- Prepared release candidate: `2026.10.21-r2`; not an assertion that a release has been published.
+- Release version: `2026.10.21-r2`.
 - Algorithm source: rank-local RNG initialization revision **20261020**.
 - Tested LAMMPS snapshot: **17 Apr 2024 (Development)**; GNU C++ 15.3.0 and MPICH 5.0.2.
 - Repository: https://github.com/cqx333/fix-fast-swap
